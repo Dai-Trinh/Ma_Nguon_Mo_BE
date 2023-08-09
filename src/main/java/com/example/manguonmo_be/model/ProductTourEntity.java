@@ -1,0 +1,204 @@
+package com.example.manguonmo_be.model;
+
+
+import org.hibernate.annotations.CollectionId;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessorOrder;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "tbl_product_tour")
+public class ProductTourEntity extends AttributesCommon {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer productTourId ;
+
+    @Column(name = "code", length = 45)
+    private String productTourCode;
+
+    @Column(name = "name", length = 200)
+    private String productTourName;
+
+    @Column(name = "name_detail", length = 300)
+    private String productTourNameDetail;
+
+    @Column(name = "time", length = 45)
+    private String productTourTime;
+
+    @Column(name = "time_start", length = 45)
+    private String productTourTimeStart;
+
+    @Column(name = "vehicle", length = 45)
+    private String producoTourVehicle;
+
+    @Column(name = "address_start", length = 100)
+    private String productTourddresStart;
+
+    @Column(name = "price", precision = 2, length = 13)
+    private BigDecimal productTourPrice;
+
+    @Column(name = "price_sale")
+    private BigDecimal productTourPriceSale;
+
+    @Column(name = "avartar", length = 200)
+    private String productTourAvartar;
+
+    @Column(name = "assess")
+    private float productTourAssess;
+
+    @Column(name = "highlight_tour")
+    private String productTourHighlightTour;
+
+    @Column(name = "service_tour")
+    private String productTourServiceTour;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private CategoryTourEntity categoryTourEntity;
+
+    @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
+    private Set<ProductTourImageEntity> productTourImageEntitySet = new HashSet<>();
+
+    @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
+    private Set<DayEntity> dayEntities = new HashSet<>();
+
+    public Integer getProductTourId() {
+        return productTourId;
+    }
+
+    public void setProductTourId(Integer productTourId) {
+        this.productTourId = productTourId;
+    }
+
+    public String getProductTourCode() {
+        return productTourCode;
+    }
+
+    public void setProductTourCode(String productTourCode) {
+        this.productTourCode = productTourCode;
+    }
+
+    public String getProductTourName() {
+        return productTourName;
+    }
+
+    public void setProductTourName(String productTourName) {
+        this.productTourName = productTourName;
+    }
+
+    public String getProductTourNameDetail() {
+        return productTourNameDetail;
+    }
+
+    public void setProductTourNameDetail(String productTourNameDetail) {
+        this.productTourNameDetail = productTourNameDetail;
+    }
+
+    public String getProductTourTime() {
+        return productTourTime;
+    }
+
+    public void setProductTourTime(String productTourTime) {
+        this.productTourTime = productTourTime;
+    }
+
+    public String getProductTourTimeStart() {
+        return productTourTimeStart;
+    }
+
+    public void setProductTourTimeStart(String productTourTimeStart) {
+        this.productTourTimeStart = productTourTimeStart;
+    }
+
+    public String getProducoTourVehicle() {
+        return producoTourVehicle;
+    }
+
+    public void setProducoTourVehicle(String producoTourVehicle) {
+        this.producoTourVehicle = producoTourVehicle;
+    }
+
+    public String getProductTourddresStart() {
+        return productTourddresStart;
+    }
+
+    public void setProductTourddresStart(String productTourddresStart) {
+        this.productTourddresStart = productTourddresStart;
+    }
+
+    public BigDecimal getProductTourPrice() {
+        return productTourPrice;
+    }
+
+    public void setProductTourPrice(BigDecimal productTourPrice) {
+        this.productTourPrice = productTourPrice;
+    }
+
+    public BigDecimal getProductTourPriceSale() {
+        return productTourPriceSale;
+    }
+
+    public void setProductTourPriceSale(BigDecimal productTourPriceSale) {
+        this.productTourPriceSale = productTourPriceSale;
+    }
+
+    public String getProductTourAvartar() {
+        return productTourAvartar;
+    }
+
+    public void setProductTourAvartar(String productTourAvartar) {
+        this.productTourAvartar = productTourAvartar;
+    }
+
+    public float getProductTourAssess() {
+        return productTourAssess;
+    }
+
+    public void setProductTourAssess(float productTourAssess) {
+        this.productTourAssess = productTourAssess;
+    }
+
+    public String getProductTourHighlightTour() {
+        return productTourHighlightTour;
+    }
+
+    public void setProductTourHighlightTour(String productTourHighlightTour) {
+        this.productTourHighlightTour = productTourHighlightTour;
+    }
+
+    public String getProductTourServiceTour() {
+        return productTourServiceTour;
+    }
+
+    public void setProductTourServiceTour(String productTourServiceTour) {
+        this.productTourServiceTour = productTourServiceTour;
+    }
+
+    public CategoryTourEntity getCategoryTourEntity() {
+        return categoryTourEntity;
+    }
+
+    public void setCategoryTourEntity(CategoryTourEntity categoryTourEntity) {
+        this.categoryTourEntity = categoryTourEntity;
+    }
+
+    public Set<ProductTourImageEntity> getProductTourImageEntitySet() {
+        return productTourImageEntitySet;
+    }
+
+    public void setProductTourImageEntitySet(Set<ProductTourImageEntity> productTourImageEntitySet) {
+        this.productTourImageEntitySet = productTourImageEntitySet;
+    }
+
+    public Set<DayEntity> getDayEntities() {
+        return dayEntities;
+    }
+
+    public void setDayEntities(Set<DayEntity> dayEntities) {
+        this.dayEntities = dayEntities;
+    }
+}
