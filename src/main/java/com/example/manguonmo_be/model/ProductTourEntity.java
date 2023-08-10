@@ -66,6 +66,18 @@ public class ProductTourEntity extends AttributesCommon {
     @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
     private Set<DayEntity> dayEntities = new HashSet<>();
 
+    @Column(name = "status")
+    private boolean status;
+
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public Integer getProductTourId() {
         return productTourId;
     }
