@@ -10,5 +10,6 @@ public class ManguonmoBeApplication {
 		SpringApplication.run(ManguonmoBeApplication.class, args);
 	}
 
+
 	
 }
