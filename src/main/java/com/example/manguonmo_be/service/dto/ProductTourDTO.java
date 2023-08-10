@@ -1,78 +1,42 @@
-package com.example.manguonmo_be.model;
+package com.example.manguonmo_be.service.dto;
 
 
-import org.hibernate.annotations.CollectionId;
-
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessorOrder;
+import javax.persistence.Column;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
-@Entity
-@Table(name = "tbl_product_tour")
-public class ProductTourEntity extends AttributesCommon {
+public class ProductTourDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer productTourId ;
-
-    @Column(name = "code", length = 45)
     private String productTourCode;
 
-    @Column(name = "name", length = 200)
+
     private String productTourName;
 
-    @Column(name = "name_detail", length = 300)
     private String productTourNameDetail;
 
-    @Column(name = "time", length = 45)
     private String productTourTime;
 
-    @Column(name = "time_start", length = 45)
     private String productTourTimeStart;
 
-    @Column(name = "vehicle", length = 45)
     private String productTourVehicle;
 
-    @Column(name = "address_start", length = 100)
     private String productTourAddressStart;
 
-    @Column(name = "price", precision = 2, length = 13)
+
     private BigDecimal productTourPrice;
 
-    @Column(name = "price_sale")
+
     private BigDecimal productTourPriceSale;
 
-    @Column(name = "avartar", length = 200)
+
     private String productTourAvatar;
 
-    @Column(name = "assess")
+
     private float productTourAssess;
 
-    @Column(name = "highlight_tour")
+
     private String productTourHighlightTour;
 
-    @Column(name = "service_tour")
     private String productTourServiceTour;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
-    private CategoryTourEntity categoryTourEntity;
-
-    @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
-    private Set<ProductTourImageEntity> productTourImageEntitySet = new HashSet<>();
-
-    @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
-    private Set<DayEntity> dayEntities = new HashSet<>();
-
-    public Integer getProductTourId() {
-        return productTourId;
-    }
-
-    public void setProductTourId(Integer productTourId) {
-        this.productTourId = productTourId;
-    }
 
     public String getProductTourCode() {
         return productTourCode;
@@ -114,12 +78,12 @@ public class ProductTourEntity extends AttributesCommon {
         this.productTourTimeStart = productTourTimeStart;
     }
 
-    public String getProductTourAvatar() {
-        return productTourAvatar;
+    public String getProductTourVehicle() {
+        return productTourVehicle;
     }
 
-    public void setProductTourAvatar(String productTourAvatar) {
-        this.productTourAvatar = productTourAvatar;
+    public void setProductTourVehicle(String productTourVehicle) {
+        this.productTourVehicle = productTourVehicle;
     }
 
     public String getProductTourAddressStart() {
@@ -128,6 +92,14 @@ public class ProductTourEntity extends AttributesCommon {
 
     public void setProductTourAddressStart(String productTourAddressStart) {
         this.productTourAddressStart = productTourAddressStart;
+    }
+
+    public String getProductTourAvatar() {
+        return productTourAvatar;
+    }
+
+    public void setProductTourAvatar(String productTourAvatar) {
+        this.productTourAvatar = productTourAvatar;
     }
 
     public BigDecimal getProductTourPrice() {
@@ -146,13 +118,6 @@ public class ProductTourEntity extends AttributesCommon {
         this.productTourPriceSale = productTourPriceSale;
     }
 
-    public String getProductTourVehicle() {
-        return productTourVehicle;
-    }
-
-    public void setProductTourVehicle(String productTourVehicle) {
-        this.productTourVehicle = productTourVehicle;
-    }
 
     public float getProductTourAssess() {
         return productTourAssess;
@@ -176,29 +141,5 @@ public class ProductTourEntity extends AttributesCommon {
 
     public void setProductTourServiceTour(String productTourServiceTour) {
         this.productTourServiceTour = productTourServiceTour;
-    }
-
-    public CategoryTourEntity getCategoryTourEntity() {
-        return categoryTourEntity;
-    }
-
-    public void setCategoryTourEntity(CategoryTourEntity categoryTourEntity) {
-        this.categoryTourEntity = categoryTourEntity;
-    }
-
-    public Set<ProductTourImageEntity> getProductTourImageEntitySet() {
-        return productTourImageEntitySet;
-    }
-
-    public void setProductTourImageEntitySet(Set<ProductTourImageEntity> productTourImageEntitySet) {
-        this.productTourImageEntitySet = productTourImageEntitySet;
-    }
-
-    public Set<DayEntity> getDayEntities() {
-        return dayEntities;
-    }
-
-    public void setDayEntities(Set<DayEntity> dayEntities) {
-        this.dayEntities = dayEntities;
     }
 }
