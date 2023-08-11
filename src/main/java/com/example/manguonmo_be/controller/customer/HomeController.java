@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.devpro.SkyTour.controller.BaseController;
+import com.example.manguonmo_be.controller.BaseController;
 
 @Controller
 public class HomeController extends BaseController{

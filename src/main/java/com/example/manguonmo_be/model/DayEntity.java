@@ -12,7 +12,8 @@ public class DayEntity extends AttributesCommon{
     @Column(name = "day_name", length = 200)
     private String dayName;
 
-    @Column(name = "day_content")
+    @Lob
+    @Column(name = "day_content", nullable = false, columnDefinition = "LONGTEXT")
     private String dayContent;
 
     @ManyToOne(fetch = FetchType.EAGER)

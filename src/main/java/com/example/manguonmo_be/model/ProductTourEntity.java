@@ -44,16 +44,18 @@ public class ProductTourEntity extends AttributesCommon {
     @Column(name = "price_sale")
     private BigDecimal productTourPriceSale;
 
-    @Column(name = "avartar", length = 200)
+    @Column(name = "avatar", length = 200)
     private String productTourAvatar;
 
     @Column(name = "assess")
     private float productTourAssess;
 
-    @Column(name = "highlight_tour")
+    @Lob
+    @Column(name = "highlight_tour", nullable = false, columnDefinition = "LONGTEXT")
     private String productTourHighlightTour;
 
-    @Column(name = "service_tour")
+    @Lob
+    @Column(name = "service_tour", nullable = false, columnDefinition = "LONGTEXT")
     private String productTourServiceTour;
 
     @ManyToOne(fetch = FetchType.EAGER)

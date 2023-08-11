@@ -1,4 +1,4 @@
-package com.devpro.SkyTour.controller.customer;
+package com.example.manguonmo_be.controller.customer;
 
 import java.io.IOException;
 

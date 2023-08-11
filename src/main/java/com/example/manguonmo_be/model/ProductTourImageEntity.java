@@ -11,7 +11,7 @@ public class ProductTourImageEntity extends AttributesCommon{
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    public Integer productTourImageId;
 
-    @Column(name = "tiltle", length = 500)
+    @Column(name="title", length=500, nullable=false)
     private String productTourImageTiltle;
 
     @Column(name = "path", length = 200)

@@ -8,16 +8,16 @@ import java.util.Set;
 @Table(name = "tbl_category_tour")
 public class CategoryTourEntity extends AttributesCommon{
 
-    @Column(name = "name")
+    @Column(name = "name", length=100, nullable=false)
     private String categoryTourName;
 
     @Column(name = "number_guest")
-    private String categoryTourNumberGuest;
+    private int categoryTourNumberGuest;
 
-    @Column(name = "avatar")
+    @Column(name = "avatar", length=200, nullable=false)
     private String categoryTourAvatar;
 
-    @Column(name = "is_love")
+    @Column(name = "is_love", nullable = true)
     private Boolean categoryTourIsLove;
 
     @OneToMany(mappedBy = "categoryTourEntity", cascade = CascadeType.ALL)
@@ -31,11 +31,11 @@ public class CategoryTourEntity extends AttributesCommon{
         this.categoryTourName = categoryTourName;
     }
 
-    public String getCategoryTourNumberGuest() {
+    public int getCategoryTourNumberGuest() {
         return categoryTourNumberGuest;
     }
 
-    public void setCategoryTourNumberGuest(String categoryTourNumberGuest) {
+    public void setCategoryTourNumberGuest(int categoryTourNumberGuest) {
         this.categoryTourNumberGuest = categoryTourNumberGuest;
     }
 
