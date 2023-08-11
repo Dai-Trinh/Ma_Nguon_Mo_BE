@@ -15,7 +15,7 @@ public class ProductTourEntity extends AttributesCommon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer productTourId ;
+    private Integer id ;
 
     @Column(name = "code", length = 45)
     private String productTourCode;
@@ -78,12 +78,12 @@ public class ProductTourEntity extends AttributesCommon {
         this.status = status;
     }
 
-    public Integer getProductTourId() {
-        return productTourId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProductTourId(Integer productTourId) {
-        this.productTourId = productTourId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getProductTourCode() {

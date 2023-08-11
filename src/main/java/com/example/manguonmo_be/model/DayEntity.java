@@ -8,7 +8,7 @@ public class DayEntity extends AttributesCommon{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer dayId;
+    private Integer id;
 
     @Column(name = "day_number")
     private Integer dayNumber;
@@ -23,12 +23,12 @@ public class DayEntity extends AttributesCommon{
     @JoinColumn(name = "product_tour_id")
     private ProductTourEntity productTourEntityDay;
 
-    public Integer getDayId() {
-        return dayId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDayId(Integer dayId) {
-        this.dayId = dayId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getDayNumber() {

@@ -9,7 +9,7 @@ public class ProductTourImageEntity extends AttributesCommon{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer productTourImageId;
+    public Integer id;
 
     @Column(name = "tiltle", length = 500)
     private String productTourImageTiltle;
@@ -21,12 +21,12 @@ public class ProductTourImageEntity extends AttributesCommon{
     @JoinColumn(name = "product_tour_id")
     private ProductTourEntity productTourEntity;
 
-    public Integer getProductTourImageId() {
-        return productTourImageId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProductTourImageId(Integer productTourImageId) {
-        this.productTourImageId = productTourImageId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getProductTourImageTiltle() {

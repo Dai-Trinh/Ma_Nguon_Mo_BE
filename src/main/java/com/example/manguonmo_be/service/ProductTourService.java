@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -37,6 +38,8 @@ public class ProductTourService {
     public CommonResponse getAllProductTour(PageInput<ProductTourDTO> input){
 
         List<ProductTourEntity> productTourEntities = new ArrayList<>();
+
+        ProductTourDTO productTourDTO = input.getFilter();
         Pageable pageable = Pageable.unpaged();
         if(input.getPageSize() != 0){
             pageable = PageRequest.of(input.getPageNumber(), input.getPageSize());
@@ -47,6 +50,13 @@ public class ProductTourService {
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         booleanBuilder.and(qProductTourEntity.status.eq(true));
+        if(!StringUtils.isEmpty(productTourDTO.getProductTourName())){
+            booleanBuilder.and(qProductTourEntity.productTourName.containsIgnoreCase(productTourDTO.getProductTourName()));
+        }
+
+        if(!StringUtils.isEmpty(productTourDTO.getProductTourAddressStart())){
+            booleanBuilder.and(qProductTourEntity.productTourAddressStart.containsIgnoreCase(productTourDTO.getProductTourAddressStart()));
+        }
 
         query.where(booleanBuilder);
 
