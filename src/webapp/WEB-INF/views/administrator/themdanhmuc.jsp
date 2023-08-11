@@ -42,25 +42,25 @@
 										method="post" enctype="multipart/form-data">
 										<div class="form-group">
 											<label for="name">Tên danh mục</label>
-											<sf:input path="name" type="text" class="form-control"
+											<sf:input path="categoryTourName" type="text" class="form-control"
 												name="name" id="name" placeholder="Tên danh mục"></sf:input>
 										</div>
 										<div class="form-group">
 											<label for="numberGuest">Số lượng khách ghé thăm</label>
-											<sf:input path="numberGuest" type="number"
+											<sf:input path="categoryTourNumberGuest" type="number"
 												class="form-control" name="" id="numberGuest"
 												placeholder="Số lượng khách ghé thăm"></sf:input>
 										</div>
 										<div class="form-group">
-											<label for="avatar">Ảnh</label><br> <img
+											<label for="categoryTourAvatar">Ảnh</label><br> <img
 												src="${base }/upload/${categorytour.avatar}" alt=""
 												style="width: 70px; height: 70px;"><br>
 												 <input type="file" name="categoryTourAvatar" id="categoryTourAvatar">
 										</div>
 										<div class="form-group">
-											<sf:checkbox path="isLove" name="isLove" id="isLove"
+											<sf:checkbox path="categoryTourIsLove" name="categoryTourIsLove" id="categoryTourIsLove"
 												style="height: 20px; width: 20px; margin: 15px 10px;" />
-											<label for="isLove" style="margin-top: 20px;">Yêu
+											<label for="categoryTourIsLove" style="margin-top: 20px;">Yêu
 												thích</label>
 										</div>
 										<div class="form-group">

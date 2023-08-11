@@ -77,7 +77,7 @@
 														</c:otherwise>
 													</c:choose>
 											</span></td>
-											<!-- <!-- 											<td><input type="checkbox" name="isHot" id="isHot"
+											<!--<td><input type="checkbox" name="isHot" id="isHot"
 												style="width: 20px; height: 20px;"></td> -->
 											<td><span id="_productTour_isSale_${productTour.id} }"
 												style="width: 20px; height: 20px;"> <c:choose>

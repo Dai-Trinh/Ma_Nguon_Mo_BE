@@ -60,9 +60,9 @@
 										action="${base }/admin/adddaytour/saveOrUpdate"
 										modelAttribute="dayTour" method="post">
 										<div class="form-group">
-											<label for="name">ID Tour</label>
+											<label for="id">ID Tour</label>
 											<sf:input path="id" type="text" class="form-control"
-												name="id" id="id" disabled></sf:input>
+												name="id" id="id" ></sf:input>
 										</div>
 <%-- 										<div class="form-group">
 											<label for="code">Mã Tour</label>
@@ -82,9 +82,9 @@
 										</div>
 										<div class="form-group">
 											<label for="dayContent">Nội dung lịch trong ngày</label>
-											<sf:textarea path="dayContent" class="form-control"
+											<sf:textarea path="dayContent"
 												name="dayContent" id="dayContent" autocomplete="off"
-												class="summernote" cols="100" rows="4"></sf:textarea>
+												class="summernote form-control" cols="100" rows="4"></sf:textarea>
 										</div>
 										<button type="submit" class="btn btn-gradient-primary me-2">Thêm</button>
 										<a href="${base }/admin/addproducttour"
