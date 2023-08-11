@@ -8,9 +8,6 @@ import java.util.Set;
 @Table(name = "tbl_category_tour")
 public class CategoryTourEntity extends AttributesCommon{
 
-    @Id
-    private Integer categoryTourId;
-
     @Column(name = "name")
     private String categoryTourName;
 
@@ -25,14 +22,6 @@ public class CategoryTourEntity extends AttributesCommon{
 
     @OneToMany(mappedBy = "categoryTourEntity", cascade = CascadeType.ALL)
     private Set<ProductTourEntity> productTourEntities = new HashSet<>();
-
-    public Integer getCategoryTourId() {
-        return categoryTourId;
-    }
-
-    public void setCategoryTourId(Integer categoryTourId) {
-        this.categoryTourId = categoryTourId;
-    }
 
     public String getCategoryTourName() {
         return categoryTourName;

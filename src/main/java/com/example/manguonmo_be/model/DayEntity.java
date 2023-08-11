@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name = "tbl_day")
 public class DayEntity extends AttributesCommon{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer dayId;
-
     @Column(name = "day_number")
     private Integer dayNumber;
 
@@ -22,14 +18,6 @@ public class DayEntity extends AttributesCommon{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_tour_id")
     private ProductTourEntity productTourEntityDay;
-
-    public Integer getDayId() {
-        return dayId;
-    }
-
-    public void setDayId(Integer dayId) {
-        this.dayId = dayId;
-    }
 
     public Integer getDayNumber() {
         return dayNumber;

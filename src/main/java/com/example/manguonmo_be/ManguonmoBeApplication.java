@@ -9,5 +9,5 @@ public class ManguonmoBeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ManguonmoBeApplication.class, args);
 	}
-	
+
 }

@@ -13,9 +13,9 @@ import java.util.Set;
 @Table(name = "tbl_product_tour")
 public class ProductTourEntity extends AttributesCommon {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer productTourId ;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer productTourId ;
 
     @Column(name = "code", length = 45)
     private String productTourCode;
@@ -62,17 +62,25 @@ public class ProductTourEntity extends AttributesCommon {
 
     @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
     private Set<ProductTourImageEntity> productTourImageEntitySet = new HashSet<>();
+    public void addProductTourImages(ProductTourImageEntity _proProductTourImages) {
+        _proProductTourImages.setProductTourEntity(this);
+        productTourImageEntitySet.add(_proProductTourImages);
+    }
+    public void deleteProductTourImages(ProductTourImageEntity _proProductTourImages) {
+        _proProductTourImages.setProductTourEntity(null);
+        productTourImageEntitySet.remove(_proProductTourImages);
+    }
 
     @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
     private Set<DayEntity> dayEntities = new HashSet<>();
 
-    public Integer getProductTourId() {
-        return productTourId;
-    }
-
-    public void setProductTourId(Integer productTourId) {
-        this.productTourId = productTourId;
-    }
+//    public Integer getProductTourId() {
+//        return productTourId;
+//    }
+//
+//    public void setProductTourId(Integer productTourId) {
+//        this.productTourId = productTourId;
+//    }
 
     public String getProductTourCode() {
         return productTourCode;
