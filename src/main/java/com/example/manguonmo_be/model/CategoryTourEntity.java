@@ -14,7 +14,7 @@ public class CategoryTourEntity extends AttributesCommon{
     @Column(name = "number_guest")
     private int categoryTourNumberGuest;
 
-    @Column(name = "avatar", length=200, nullable=false)
+    @Column(name = "avatar", length=200)
     private String categoryTourAvatar;
 
     @Column(name = "is_love", nullable = true)

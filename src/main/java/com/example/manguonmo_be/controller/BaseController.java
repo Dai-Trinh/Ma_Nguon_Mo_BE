@@ -19,7 +19,7 @@ public abstract class BaseController {
 	 * kết quả của hàm sẽ tự động đẩy xuống view
 	 */
 	
-	@ModelAttribute("categoryTour")
+	@ModelAttribute("categorytour")
 	public List<CategoryTourEntity> getAllCategories(){
 		return categoryTourService.findAll();
 	}

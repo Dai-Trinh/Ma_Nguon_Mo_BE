@@ -56,9 +56,10 @@
 								<div class="card-body">
 									<h4 class="card-title">Thêm lịch trình tour ngày thứ nhất</h4>
 									<p class="card-description">SkyTour</p>
+									<%--@elvariable id="daytour" type="java"--%>
 									<sf:form class="forms-sample"
 										action="${base }/admin/adddaytour/saveOrUpdate"
-										modelAttribute="dayTour" method="post">
+										modelAttribute="daytour" method="post">
 										<div class="form-group">
 											<label for="id">ID Tour</label>
 											<sf:input path="id" type="text" class="form-control"

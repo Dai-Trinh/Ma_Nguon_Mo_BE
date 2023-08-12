@@ -17,15 +17,12 @@ public abstract class AttributesCommon {
     @Column(name = "created_date", nullable = true)
     private Date createdDate;
     @Column(name = "created_by", nullable = true)
-    private int createdBy;
+    private Integer createdBy;
     @Column(name = "updated_date", nullable = true)
     private Date updatedDate;
     @Column(name = "updated_by", nullable = true)
-    private int updatedBy;
+    private Integer updatedBy;
 
-    public Boolean getStatus() {
-        return status;
-    }
 
     public Integer getId() {
         return id;
@@ -33,6 +30,10 @@ public abstract class AttributesCommon {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getStatus() {
+        return status;
     }
 
     public void setStatus(Boolean status) {
@@ -47,11 +48,11 @@ public abstract class AttributesCommon {
         this.createdDate = createdDate;
     }
 
-    public int getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -63,11 +64,11 @@ public abstract class AttributesCommon {
         this.updatedDate = updatedDate;
     }
 
-    public int getUpdatedBy() {
+    public Integer getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
 }

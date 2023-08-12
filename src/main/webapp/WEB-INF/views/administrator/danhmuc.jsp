@@ -58,14 +58,14 @@
 										varStatus="loop">
 										<tr>
 											<th scope="row">${loop.index +1 }</th>
-											<td><img src="${base }/upload/${categoryTour.avatar}"
+											<td><img src="${base }/upload/${categoryTour.categoryTourAvatar}"
 												alt=""
 												style="width: 50px; height: 50px; border-radius: 0px;"></td>
-											<td>${categoryTour.name}</td>
-											<td>${categoryTour.numberGuest}</td>
+											<td>${categoryTour.categoryTourName}</td>
+											<td>${categoryTour.categoryTourNumberGuest}</td>
 											<td><span id="_categoryTour_isLove_${categoryTour.id} }">
 													<c:choose>
-														<c:when test="${categoryTour.isLove }">
+														<c:when test="${categoryTour.categoryTourIsLove }">
 															<input type="checkbox" checked="checked"
 																readonly="readonly">
 														</c:when>

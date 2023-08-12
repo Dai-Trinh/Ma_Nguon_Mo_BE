@@ -60,39 +60,36 @@
 										varStatus="loop">
 										<tr>
 											<th scope="row">${loop.index +1 }</th>
-											<td><img src="${base }/upload/${productTour.avatar}"
+											<td><img src="${base }/upload/${productTour.productTourAvatar}"
 												alt=""
 												style="width: 50px; height: 50px; border-radius: 0px;"></td>
-											<td>${productTour.code}</td>
-											<td>${productTour.name}</td>
-											<td>${productTour.time}</td>
-											<td><span id="_productTour_isHot_${productTour.id} }"
-												style="width: 20px; height: 20px;"> <c:choose>
-														<c:when test="${productTour.isHot}">
+											<td>${productTour.productTourCode}</td>
+											<td>${productTour.productTourName}</td>
+											<td>${productTour.productTourTime}</td>
+											<td><span id="_productTour_ishot_${productTour.id} }"
+													  style="width: 20px; height: 20px;"> <c:choose>
+												<c:when test="${productTour.productTourIsHot}">
 															<input type="checkbox" checked="checked"
-																readonly="readonly">
-														</c:when>
-														<c:otherwise>
-															<input type="checkbox" readonly="readonly">
-														</c:otherwise>
-													</c:choose>
+																   readonly="readonly">
+												</c:when>
+												<c:otherwise>
+													<input type="checkbox" readonly="readonly">
+												</c:otherwise>
+											</c:choose>
 											</span></td>
-											<!--<td><input type="checkbox" name="isHot" id="isHot"
-												style="width: 20px; height: 20px;"></td> -->
-											<td><span id="_productTour_isSale_${productTour.id} }"
-												style="width: 20px; height: 20px;"> <c:choose>
-														<c:when test="${productTour.isSale}">
+
+											<td><span id="_productTour_issale_${productTour.id} }"
+													  style="width: 20px; height: 20px;"> <c:choose>
+												<c:when test="${productTour.productTourIsSale}">
 															<input type="checkbox" checked="checked"
-																readonly="readonly">
-														</c:when>
-														<c:otherwise>
-															<input type="checkbox" readonly="readonly">
-														</c:otherwise>
-													</c:choose>
+																   readonly="readonly">
+												</c:when>
+												<c:otherwise>
+													<input type="checkbox" readonly="readonly">
+												</c:otherwise>
+											</c:choose>
 											</span></td>
-											<!--<td><input type="checkbox" name="isSale" id="isSale"
-												style="width: 20px; height: 20px;"></td> -->
-											<td><span id="_productTour_isSale_${productTour.id} }"
+											<td><span id="_productTour_status_${productTour.id} }"
 												style="width: 20px; height: 20px;"> <c:choose>
 														<c:when test="${productTour.status}">
 															<input type="checkbox" checked="checked"
@@ -103,8 +100,6 @@
 														</c:otherwise>
 													</c:choose>
 											</span></td>
-											<!-- 											<td><input type="checkbox" name="status" id="status"
-												style="width: 20px; height: 20px;"></td> -->
 											<td><a
 												href="${base }/amdin/addproducttour/${productTour.id}"
 												class="btn btn-warning" id="updateProduct">Sửa</a>

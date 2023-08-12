@@ -66,11 +66,11 @@ public class AdminProductTourController extends BaseController {
 	@RequestMapping(value = {"/admin/addcategorytour/saveOrUpdate"}, method = RequestMethod.POST)
 	public String addOrUpdate_category_tour(final Model model, final HttpServletRequest request, final HttpServletResponse response,
 											@ModelAttribute("categorytour") CategoryTourEntity categoryTour,
-											@RequestParam("categoryTourAvatar") MultipartFile categoryTourAvatar) throws IOException{
+											@RequestParam("categoryTourAvatarRq") MultipartFile categoryTourAvatarRq) throws IOException{
 		if(categoryTour.getId() == null || categoryTour.getId() <=0) {
-			categoryTourService.addCategoryTour(categoryTour, categoryTourAvatar);		
+			categoryTourService.addCategoryTour(categoryTour, categoryTourAvatarRq);
 		}else {
-			categoryTourService.editCategoryTour(categoryTour, categoryTourAvatar);
+			categoryTourService.editCategoryTour(categoryTour, categoryTourAvatarRq);
 		}	
 		return "redirect:/admin/categorytour";
 	}
@@ -118,13 +118,14 @@ public class AdminProductTourController extends BaseController {
 		return "administrator/themsanpham";
 	}
 	@RequestMapping(value = {"/admin/addproducttour/saveOrUpdate"}, method = RequestMethod.POST)
-	public String add_producttour_save(final Model model, final HttpServletRequest request, final HttpServletResponse response, @ModelAttribute("producttour") ProductTourEntity productTour,
-										@RequestParam("productAvatar") MultipartFile productTourAvatar,
-										@RequestParam("productPictures") MultipartFile[] productPictures) throws IllegalStateException, IOException {
+	public String add_producttour_save(final Model model, final HttpServletRequest request, final HttpServletResponse response,
+									   @ModelAttribute("productTour") ProductTourEntity productTour,
+										@RequestParam("productTourAvatarRq") MultipartFile productTourAvatarRq,
+										@RequestParam("productTourImageEntitySetRq") MultipartFile[] productTourImageEntitySetRq) throws IllegalStateException, IOException {
 		if(productTour.getId() == null || productTour.getId() <= 0) {
-			productTourService.addProduct(productTour, productTourAvatar, productPictures);
+			productTourService.addProduct(productTour, productTourAvatarRq, productTourImageEntitySetRq);
 		}else {
-			productTourService.editProduct(productTour, productTourAvatar, productPictures);
+			productTourService.editProduct(productTour, productTourAvatarRq, productTourImageEntitySetRq);
 		}
 		return "redirect:/admin/producttour";
 	}

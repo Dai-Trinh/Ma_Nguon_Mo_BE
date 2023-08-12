@@ -37,9 +37,15 @@
 								<div class="card-body">
 									<h4 class="card-title">Thêm danh mục tour</h4>
 									<p class="card-description">SkyTour</p>
-									<sf:form modelAttribute="categorytour" class="forms-sample"
+									<%--@elvariable id="categorytour" type="java"--%>
+									<sf:form class="forms-sample" modelAttribute="categorytour"
 										action="${base}/admin/addcategorytour/saveOrUpdate"
 										method="post" enctype="multipart/form-data">
+										<div class="form-group">
+											<label for="id">Mã id cửa hàng</label>
+											<sf:input path="id" type="text" class="form-control"
+													  name="id" id="id" readonly="true"></sf:input>
+										</div>
 										<div class="form-group">
 											<label for="name">Tên danh mục</label>
 											<sf:input path="categoryTourName" type="text" class="form-control"
@@ -52,10 +58,10 @@
 												placeholder="Số lượng khách ghé thăm"></sf:input>
 										</div>
 										<div class="form-group">
-											<label for="categoryTourAvatar">Ảnh</label><br> <img
-												src="${base }/upload/${categorytour.avatar}" alt=""
+											<label for="categoryTourAvatarRq">Ảnh</label><br> <img
+												src="${base }/upload/${categorytour.categoryTourAvatar}" alt=""
 												style="width: 70px; height: 70px;"><br>
-												 <input type="file" name="categoryTourAvatar" id="categoryTourAvatar">
+												 <input type="file" name="categoryTourAvatarRq" id="categoryTourAvatarRq">
 										</div>
 										<div class="form-group">
 											<sf:checkbox path="categoryTourIsLove" name="categoryTourIsLove" id="categoryTourIsLove"

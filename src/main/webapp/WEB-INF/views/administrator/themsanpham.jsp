@@ -63,6 +63,7 @@
 							<p>Thông Tin Tour</p>
 						</div>
 						<div class="product__body__table">
+							<%--@elvariable id="productTour" type="java"--%>
 							<sf:form modelAttribute="productTour"
 								action="${base }/admin/addproducttour/saveOrUpdate"
 								method="post" enctype="multipart/form-data">
@@ -70,56 +71,56 @@
 									<tr>
 										<td>Avatar:</td>
 										<td style="height: 200px;"><img
-											src="${base }/upload/${productTour.avatar}" alt=""
+											src="${base }/upload/${productTour.productTourAvatar}" alt=""
 											style="width: 70px; height: 70px;"><br> <input
-											type='file' name='productAvatar' id="productAvatar"
+											type='file' name='productTourAvatarRq' id="productTourAvatarRq"
 											style="margin-top: 40px; height: 56px;"><br></td>
 									</tr>
 									<tr>
 									<tr>
 										<td>Hình ảnh:</td>
 										<td style="height: 200px;"><c:forEach
-												items="${productTour.productTourImages }"
+												items="${productTour.productTourImageEntitySet }"
 												var="productTourImages">
 												<img alt="" style="width: 70px; height: 70px;"
 													src="${base }/upload/${productTourImages.path}">
-											</c:forEach><br> <input type="file" id="fileProductPictures"
-											name="productPictures" multiple="multiple"
+											</c:forEach><br> <input type="file" id="productTourImageEntitySetRq"
+											name="productTourImageEntitySetRq" multiple="multiple"
 											style="margin-top: 40px; height: 56px;"><br></td>
 									</tr>
 									<tr>
 										<td>Danh Mục:</td>
-										<td><sf:select path="categoryTour.id" type="text"
+										<td><sf:select path="categoryTourEntity.id" type="text"
 												name="category" id="category">
-												<sf:options items="${categoryTour }" itemValue="id"
-													itemLabel="name" />
+												<sf:options items="${categorytour }" itemValue="id"
+													itemLabel="categoryTourName" />
 											</sf:select></td>
 										<!-- 										<td><input type="text" name="categoryId" id="categoryId"></td>
  -->
 									<tr>
 										<td>Mã tour:</td>
-										<td><sf:input path="code" type="text" name="code"
-												id="code"></sf:input></td>
+										<td><sf:input path="productTourCode" type="text" name="productTourCode"
+												id="productTourCode"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Tên tour:</td>
-										<td><sf:input path="name" type="text" name="name"
-												id="name"></sf:input></td>
+										<td><sf:input path="productTourName" type="text" name="productTourName"
+												id="productTourName"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Tên tour chi tiết:</td>
-										<td><sf:input path="nameDetail" type="text"
-												name="nameDetail" id="nameDetail"></sf:input></td>
+										<td><sf:input path="productTourNameDetail" type="text"
+												name="productTourNameDetail" id="productTourNameDetail"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Thời gian:</td>
-										<td><sf:input path="time" type="text" name="time"
-												id="time" placeholder="(3 ngày 2 đêm, 5 ngày 4 đêm, ...)"></sf:input></td>
+										<td><sf:input path="productTourTime" type="text" name="productTourTime"
+												id="productTourTime" placeholder="(3 ngày 2 đêm, 5 ngày 4 đêm, ...)"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Thời gian khởi hành:</td>
-										<td><sf:select path="timeStart" name="timeStart"
-												id="timeStart">
+										<td><sf:select path="productTourTimeStart" name="productTourTimeStart"
+												id="productTourTimeStart">
 												<sf:option value="2">Thứ hai</sf:option>
 												<sf:option value="3">Thứ ba</sf:option>
 												<sf:option value="4">Thứ tư</sf:option>
@@ -127,12 +128,12 @@
 												<sf:option value="6">Thứ sáu</sf:option>
 												<sf:option value="7">Thứ bảy</sf:option>
 												<sf:option value="8">Chủ Nhật</sf:option>
-												<sf:option value="9">Mọi ngày</sf:option>
+												<sf:option value="9">Mọi ngày trong tuần</sf:option>
 											</sf:select></td>
 									</tr>
 									<tr>
 										<td>Phương tiện:</td>
-										<td><sf:select path="vehicle" name="vehicle" id="vehicle">
+										<td><sf:select path="productTourVehicle" name="productTourVehicle" id="productTourVehicle">
 												<sf:option value="1">Ô tô con</sf:option>
 												<sf:option value="2">Ô tô điện</sf:option>
 												<sf:option value="3">Xe khách</sf:option>
@@ -140,33 +141,32 @@
 												<sf:option value="5">Xe máy</sf:option>
 												<sf:option value="6">Máy bay</sf:option>
 												<sf:option value="7">Du thuyền</sf:option>
-												<sf:option value="8">Thứ bảy</sf:option>
 											</sf:select></td>
 									</tr>
 									<tr>
 										<td>Địa điểm khởi hành:</td>
-										<td><sf:input path="addressStart" type="text"
-												name="addressStart" id="addressStart"></sf:input></td>
+										<td><sf:input path="productTourAddressStart" type="text"
+												name="productTourAddressStart" id="productTourAddressStart" placeholder="( Từ Hà Nội, Đà Nẵng, Tp. HCM...)"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Giá:</td>
-										<td><sf:input path="price" type="text" name="price"
-												id="price"></sf:input></td>
+										<td><sf:input path="productTourPrice" type="text" name="productTourPrice"
+												id="productTourPrice"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Giá trước khuyến mãi:</td>
-										<td><sf:input path="priceSale" type="text"
-												name="priceSale" id="priceSale"></sf:input></td>
+										<td><sf:input path="productTourPriceSale" type="text"
+												name="productTourPriceSale" id="productTourPriceSale"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Đánh giá:</td>
-										<td><sf:input path="assess" type="text" name="assess"
-												id="assess"></sf:input></td>
+										<td><sf:input path="productTourAssess" type="text" name="productTourAssess"
+												id="productTourAssess" value="5" readonly="true"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Điểm nhấn tour:</td>
-										<td><sf:textarea path="highlightTour"
-												name="highlightTour" id="highlightTour" autocomplete="off"
+										<td><sf:textarea path="productTourHighlightTour"
+												name="productTourHighlightTour" id="productTourHighlightTour" autocomplete="off"
 												class="summernote" cols="100" rows="2"></sf:textarea></td>
 									</tr>
 									<tr>
@@ -177,21 +177,21 @@
 									</tr>
 									<tr>
 										<td>Dịch vụ tour:</td>
-										<td><sf:textarea path="serviceTour" name="serviceTour"
-												id="serviceTour" autocomplete="off" class="summernote"
+										<td><sf:textarea path="productTourServiceTour" name="productTourServiceTour"
+												id="productTourServiceTour" autocomplete="off" class="summernote"
 												cols="100" rows="2"></sf:textarea></td>
 									</tr>
 									<tr>
 										<td>Tác vụ:</td>
-										<td><sf:checkbox path="isHot" name="isHot" id="isHot"
+										<td><sf:checkbox path="productTourIsHot" name="productTourIsHot" id="productTourIsHot"
 												style="height: 20px; width: 20px; margin: 0px 10px;" /> <label
-											for="isHot"> Nổi bật</label><br></td>
+											for="productTourIsHot"> Nổi bật</label><br></td>
 									</tr>
 									<tr>
 										<td></td>
-										<td><sf:checkbox path="isSale" name="isSale" id="isSale"
+										<td><sf:checkbox path="productTourIsSale" name="productTourIsSale" id="productTourIsSale"
 												style="height: 20px; width: 20px; margin: 0px 10px;" /> <label
-											for="isSale">Giảm giá</label><br></td>
+											for="productTourIsSale">Giảm giá</label><br></td>
 									</tr>
 									<tr>
 										<td></td>
@@ -234,7 +234,7 @@
 	<!-- internal javascript -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#highlightTour').summernote({
+			$('#productTourHighlightTour').summernote({
 				placeholder : 'Mô tả chi tiết',
 				width : 500,
 				height : 100, // set editor height
@@ -246,7 +246,7 @@
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#serviceTour').summernote({
+			$('#productTourServiceTour').summernote({
 				placeholder : 'Mô tả chi tiết',
 				width : 500,
 				height : 100, // set editor height

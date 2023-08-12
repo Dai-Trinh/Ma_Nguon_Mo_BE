@@ -58,6 +58,15 @@ public class ProductTourEntity extends AttributesCommon {
     @Column(name = "service_tour", nullable = false, columnDefinition = "LONGTEXT")
     private String productTourServiceTour;
 
+    @Column(name = "is_hot", nullable = true)
+    private Boolean productTourIsHot = Boolean.TRUE;
+
+    @Column(name = "is_sale", nullable = true)
+    private Boolean productTourIsSale = Boolean.TRUE;
+
+    @Column(name="seo", length=1000, nullable=true)
+    private String seo;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private CategoryTourEntity categoryTourEntity;
@@ -210,5 +219,29 @@ public class ProductTourEntity extends AttributesCommon {
 
     public void setDayEntities(Set<DayEntity> dayEntities) {
         this.dayEntities = dayEntities;
+    }
+
+    public Boolean getProductTourIsHot() {
+        return productTourIsHot;
+    }
+
+    public void setProductTourIsHot(Boolean productTourIsHot) {
+        this.productTourIsHot = productTourIsHot;
+    }
+
+    public Boolean getProductTourIsSale() {
+        return productTourIsSale;
+    }
+
+    public void setProductTourIsSale(Boolean productTourIsSale) {
+        this.productTourIsSale = productTourIsSale;
+    }
+
+    public String getSeo() {
+        return seo;
+    }
+
+    public void setSeo(String seo) {
+        this.seo = seo;
     }
 }
