@@ -1,8 +1,5 @@
 package com.example.manguonmo_be.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,37 +8,20 @@ import java.util.Set;
 @Table(name = "tbl_category_tour")
 public class CategoryTourEntity extends AttributesCommon{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "name")
+    @Column(name = "name", length=100, nullable=false)
     private String categoryTourName;
 
     @Column(name = "number_guest")
-    private String categoryTourNumberGuest;
+    private int categoryTourNumberGuest;
 
-    @Column(name = "avatar")
+    @Column(name = "avatar", length=200)
     private String categoryTourAvatar;
 
-    @Column(name = "is_love")
+    @Column(name = "is_love", nullable = true)
     private Boolean categoryTourIsLove;
 
-    @Column(name = "status")
-    private Boolean status;
-
-    @OneToMany(mappedBy = "categoryTourEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "categoryTourEntity", cascade = CascadeType.ALL)
     private Set<ProductTourEntity> productTourEntities = new HashSet<>();
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getCategoryTourName() {
         return categoryTourName;
@@ -51,11 +31,11 @@ public class CategoryTourEntity extends AttributesCommon{
         this.categoryTourName = categoryTourName;
     }
 
-    public String getCategoryTourNumberGuest() {
+    public int getCategoryTourNumberGuest() {
         return categoryTourNumberGuest;
     }
 
-    public void setCategoryTourNumberGuest(String categoryTourNumberGuest) {
+    public void setCategoryTourNumberGuest(int categoryTourNumberGuest) {
         this.categoryTourNumberGuest = categoryTourNumberGuest;
     }
 
@@ -73,14 +53,6 @@ public class CategoryTourEntity extends AttributesCommon{
 
     public void setCategoryTourIsLove(Boolean categoryTourIsLove) {
         this.categoryTourIsLove = categoryTourIsLove;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
     public Set<ProductTourEntity> getProductTourEntities() {

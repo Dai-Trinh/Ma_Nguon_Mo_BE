@@ -7,11 +7,11 @@ import javax.persistence.*;
 @Table(name = "tblt_product_tour_images")
 public class ProductTourImageEntity extends AttributesCommon{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    public Integer productTourImageId;
 
-    @Column(name = "tiltle", length = 500)
+    @Column(name="title", length=500, nullable=false)
     private String productTourImageTiltle;
 
     @Column(name = "path", length = 200)
@@ -21,13 +21,13 @@ public class ProductTourImageEntity extends AttributesCommon{
     @JoinColumn(name = "product_tour_id")
     private ProductTourEntity productTourEntity;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public Integer getProductTourImageId() {
+//        return productTourImageId;
+//    }
+//
+//    public void setProductTourImageId(Integer productTourImageId) {
+//        this.productTourImageId = productTourImageId;
+//    }
 
     public String getProductTourImageTiltle() {
         return productTourImageTiltle;

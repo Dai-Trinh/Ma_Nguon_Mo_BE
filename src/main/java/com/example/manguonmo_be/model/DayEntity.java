@@ -6,30 +6,19 @@ import javax.persistence.*;
 @Table(name = "tbl_day")
 public class DayEntity extends AttributesCommon{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
     @Column(name = "day_number")
     private Integer dayNumber;
 
     @Column(name = "day_name", length = 200)
     private String dayName;
 
-    @Column(name = "day_content")
+    @Lob
+    @Column(name = "day_content", nullable = false, columnDefinition = "LONGTEXT")
     private String dayContent;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_tour_id")
     private ProductTourEntity productTourEntityDay;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getDayNumber() {
         return dayNumber;

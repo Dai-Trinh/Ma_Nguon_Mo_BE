@@ -1,8 +1,6 @@
 package com.example.manguonmo_be.model;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CollectionId;
 
 import javax.persistence.*;
@@ -15,9 +13,9 @@ import java.util.Set;
 @Table(name = "tbl_product_tour")
 public class ProductTourEntity extends AttributesCommon {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id ;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer productTourId ;
 
     @Column(name = "code", length = 45)
     private String productTourCode;
@@ -46,48 +44,54 @@ public class ProductTourEntity extends AttributesCommon {
     @Column(name = "price_sale")
     private BigDecimal productTourPriceSale;
 
-    @Column(name = "avartar", length = 200)
+    @Column(name = "avatar", length = 200)
     private String productTourAvatar;
 
     @Column(name = "assess")
     private float productTourAssess;
 
-    @Column(name = "highlight_tour")
+    @Lob
+    @Column(name = "highlight_tour", nullable = false, columnDefinition = "LONGTEXT")
     private String productTourHighlightTour;
 
-    @Column(name = "service_tour")
+    @Lob
+    @Column(name = "service_tour", nullable = false, columnDefinition = "LONGTEXT")
     private String productTourServiceTour;
+
+    @Column(name = "is_hot", nullable = true)
+    private Boolean productTourIsHot = Boolean.TRUE;
+
+    @Column(name = "is_sale", nullable = true)
+    private Boolean productTourIsSale = Boolean.TRUE;
+
+    @Column(name="seo", length=1000, nullable=true)
+    private String seo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
-    @JsonBackReference
-    private CategoryTourEntity categoryTourEntity = new CategoryTourEntity();
+    private CategoryTourEntity categoryTourEntity;
 
     @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
     private Set<ProductTourImageEntity> productTourImageEntitySet = new HashSet<>();
+    public void addProductTourImages(ProductTourImageEntity _proProductTourImages) {
+        _proProductTourImages.setProductTourEntity(this);
+        productTourImageEntitySet.add(_proProductTourImages);
+    }
+    public void deleteProductTourImages(ProductTourImageEntity _proProductTourImages) {
+        _proProductTourImages.setProductTourEntity(null);
+        productTourImageEntitySet.remove(_proProductTourImages);
+    }
 
     @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
     private Set<DayEntity> dayEntities = new HashSet<>();
 
-    @Column(name = "status")
-    private boolean status;
-
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public Integer getProductTourId() {
+//        return productTourId;
+//    }
+//
+//    public void setProductTourId(Integer productTourId) {
+//        this.productTourId = productTourId;
+//    }
 
     public String getProductTourCode() {
         return productTourCode;
@@ -215,5 +219,29 @@ public class ProductTourEntity extends AttributesCommon {
 
     public void setDayEntities(Set<DayEntity> dayEntities) {
         this.dayEntities = dayEntities;
+    }
+
+    public Boolean getProductTourIsHot() {
+        return productTourIsHot;
+    }
+
+    public void setProductTourIsHot(Boolean productTourIsHot) {
+        this.productTourIsHot = productTourIsHot;
+    }
+
+    public Boolean getProductTourIsSale() {
+        return productTourIsSale;
+    }
+
+    public void setProductTourIsSale(Boolean productTourIsSale) {
+        this.productTourIsSale = productTourIsSale;
+    }
+
+    public String getSeo() {
+        return seo;
+    }
+
+    public void setSeo(String seo) {
+        this.seo = seo;
     }
 }
