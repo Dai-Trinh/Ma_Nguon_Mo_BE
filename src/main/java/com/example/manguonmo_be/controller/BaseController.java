@@ -2,6 +2,7 @@ package com.example.manguonmo_be.controller;
 
 import java.util.List;
 
+import com.example.manguonmo_be.model.ProductTourEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -23,6 +24,8 @@ public abstract class BaseController {
 	public List<CategoryTourEntity> getAllCategories(){
 		return categoryTourService.findAll();
 	}
+
+
 	/**
 	 * trả về entity User chính là user logined
 	 * User logined có thể truy cập thông qua class SecurityContextHolder

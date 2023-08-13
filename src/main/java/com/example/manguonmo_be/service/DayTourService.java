@@ -25,7 +25,7 @@ public class DayTourService extends BaseService<DayEntity>{
 	@Transactional
 	public DayEntity editDayTour(DayEntity dayTour) throws IllegalStateException, IOException {
 		//lay thong tin category theo id
-		DayEntity dayTourInDb = super.getById(dayTour.getId());
-		return super.saveOrUpdate(dayTourInDb);
+//		DayEntity dayTourInDb = super.getById(dayTour.getId());
+		return super.saveOrUpdate(dayTour);
 	}
 }

@@ -42,7 +42,7 @@
 										action="${base}/admin/addcategorytour/saveOrUpdate"
 										method="post" enctype="multipart/form-data">
 										<div class="form-group">
-											<label for="id">Mã id cửa hàng</label>
+											<label for="id">Mã id danh mục</label>
 											<sf:input path="id" type="text" class="form-control"
 													  name="id" id="id" readonly="true"></sf:input>
 										</div>
@@ -54,7 +54,7 @@
 										<div class="form-group">
 											<label for="numberGuest">Số lượng khách ghé thăm</label>
 											<sf:input path="categoryTourNumberGuest" type="number"
-												class="form-control" name="" id="numberGuest"
+												class="form-control" name="numberGuest" id="numberGuest"
 												placeholder="Số lượng khách ghé thăm"></sf:input>
 										</div>
 										<div class="form-group">

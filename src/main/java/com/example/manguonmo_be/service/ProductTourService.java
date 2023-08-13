@@ -96,7 +96,7 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
                 productTour.addProductTourImages(productTourImages);
             }
         }
-        //tạo seo: bổ sung thêm thời gian tính bằng miliseconds để tránh trùng seo
+//        tạo seo: bổ sung thêm thời gian tính bằng miliseconds để tránh trùng seo
 //        Slugify slugify = new Slugify();
 //        productTour.setSeo(slugify.slugify(productTour.getName()+"-"+System.currentTimeMillis()));
         //lưu vào database
@@ -152,11 +152,11 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
                 productTour.addProductTourImages(pi);
             }
         }
-        //tạo seo
+//        tạo seo
 //        Slugify slugify = new Slugify();
 //        productTour.setSeo(slugify.slugify(productTour.getName() + "-" + System.currentTimeMillis()));
 
-        return super.saveOrUpdate(productTourInDb);
+        return super.saveOrUpdate(productTour);
     }
 //    public PagerData<ProductTour> searchProduct(ProductSearch searchModel) {
 //        // khởi tạo câu lệnh

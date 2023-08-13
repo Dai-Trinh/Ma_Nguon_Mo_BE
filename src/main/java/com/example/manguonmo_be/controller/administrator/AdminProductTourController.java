@@ -129,7 +129,7 @@ public class AdminProductTourController extends BaseController {
 		}
 		return "redirect:/admin/producttour";
 	}
-	@RequestMapping(value= {"/admin/addproducttour/saveOrUpdate/{productTourId}"}, method = RequestMethod.GET)
+	@RequestMapping(value= {"/admin/addproducttour/{productTourId}"}, method = RequestMethod.GET)
 	public String update_producttour_save(final Model model, final HttpServletRequest request, final HttpServletResponse response,
 											@PathVariable("productTourId") Integer productTourId) {
 		ProductTourEntity productTour = productTourService.getById(productTourId);

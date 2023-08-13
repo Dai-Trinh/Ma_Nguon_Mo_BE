@@ -83,10 +83,18 @@
 												items="${productTour.productTourImageEntitySet }"
 												var="productTourImages">
 												<img alt="" style="width: 70px; height: 70px;"
-													src="${base }/upload/${productTourImages.path}">
-											</c:forEach><br> <input type="file" id="productTourImageEntitySetRq"
+													src="${base }/upload/${productTourImages.productTourImagePath}">
+											</c:forEach><br>
+											<input type="file" id="productTourImageEntitySetRq"
 											name="productTourImageEntitySetRq" multiple="multiple"
 											style="margin-top: 40px; height: 56px;"><br></td>
+									</tr>
+									<tr>
+										<td>Id: </td>
+										<td>
+											<sf:input path="id" type="text" class="form-control"
+													  name="id" id="id" readonly="true"></sf:input>
+										</td>
 									</tr>
 									<tr>
 										<td>Danh Mục:</td>
@@ -99,22 +107,22 @@
  -->
 									<tr>
 										<td>Mã tour:</td>
-										<td><sf:input path="productTourCode" type="text" name="productTourCode"
+										<td><sf:input path="productTourCode" type="text" name="productTourCode" required="true"
 												id="productTourCode"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Tên tour:</td>
-										<td><sf:input path="productTourName" type="text" name="productTourName"
+										<td><sf:input path="productTourName" type="text" name="productTourName" required="true"
 												id="productTourName"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Tên tour chi tiết:</td>
-										<td><sf:input path="productTourNameDetail" type="text"
+										<td><sf:input path="productTourNameDetail" type="text" required="true"
 												name="productTourNameDetail" id="productTourNameDetail"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Thời gian:</td>
-										<td><sf:input path="productTourTime" type="text" name="productTourTime"
+										<td><sf:input path="productTourTime" type="text" name="productTourTime" required="true"
 												id="productTourTime" placeholder="(3 ngày 2 đêm, 5 ngày 4 đêm, ...)"></sf:input></td>
 									</tr>
 									<tr>
@@ -145,12 +153,12 @@
 									</tr>
 									<tr>
 										<td>Địa điểm khởi hành:</td>
-										<td><sf:input path="productTourAddressStart" type="text"
+										<td><sf:input path="productTourAddressStart" type="text" required="true"
 												name="productTourAddressStart" id="productTourAddressStart" placeholder="( Từ Hà Nội, Đà Nẵng, Tp. HCM...)"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Giá:</td>
-										<td><sf:input path="productTourPrice" type="text" name="productTourPrice"
+										<td><sf:input path="productTourPrice" type="text" name="productTourPrice" required="true"
 												id="productTourPrice"></sf:input></td>
 									</tr>
 									<tr>
@@ -160,7 +168,7 @@
 									</tr>
 									<tr>
 										<td>Đánh giá:</td>
-										<td><sf:input path="productTourAssess" type="text" name="productTourAssess"
+										<td><sf:input path="productTourAssess" type="text" name="productTourAssess" required="true"
 												id="productTourAssess" value="5" readonly="true"></sf:input></td>
 									</tr>
 									<tr>
@@ -171,7 +179,7 @@
 									</tr>
 									<tr>
 										<td>Lịch trình tour:</td>
-										<td><a href="${base }/admin/adddaytour"
+										<td><a href="${base }/admin/adddaytour/${productTour.id}"
 											class="btn btn-behance" style="background: #ccc;">Thêm
 												lịch trình tour</a></td>
 									</tr>

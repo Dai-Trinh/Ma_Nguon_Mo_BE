@@ -51,4 +51,5 @@ public class DayEntity extends AttributesCommon{
     public void setProductTourEntityDay(ProductTourEntity productTourEntityDay) {
         this.productTourEntityDay = productTourEntityDay;
     }
+
 }
