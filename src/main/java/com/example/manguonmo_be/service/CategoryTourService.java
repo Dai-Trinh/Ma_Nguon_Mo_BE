@@ -6,6 +6,7 @@ import com.example.manguonmo_be.model.QCategoryTourEntity;
 import com.example.manguonmo_be.repository.CategoryTourRepository;
 import com.example.manguonmo_be.service.dto.CategoryTourDTO;
 import com.example.manguonmo_be.service.input.PageInput;
+import com.example.manguonmo_be.service.mapper.CategoryTourMapper;
 import com.example.manguonmo_be.service.respone.CommonResponse;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +32,7 @@ public class CategoryTourService {
     EntityManager entityManager;
 
     public CommonResponse getAllCategoryTour(PageInput<CategoryTourDTO> input){
+        List<CategoryTourDTO> categoryTourDTOS = new ArrayList<>();
         Pageable pageable = Pageable.unpaged();
         if(input.getPageSize() != 0){
             pageable = PageRequest.of(input.getPageNumber(), input.getPageSize());
@@ -44,10 +47,12 @@ public class CategoryTourService {
         long count = query.fetchCount();
 
         Page<CategoryTourEntity> categoryTourEntities = new PageImpl<>(categoryTourEntityList, pageable, count);
+        for (CategoryTourEntity categoryTourEntity : categoryTourEntities.getContent()){
+            categoryTourDTOS.add(CategoryTourMapper.INSTANCE.convertToDTO(categoryTourEntity));
+        }
 
-        return new CommonResponse()
-                .success()
-                .data(categoryTourEntities.getContent())
+        return new CommonResponse().success()
+                .data(categoryTourDTOS)
                 .dataCount(categoryTourEntities.getTotalElements());
     }
 

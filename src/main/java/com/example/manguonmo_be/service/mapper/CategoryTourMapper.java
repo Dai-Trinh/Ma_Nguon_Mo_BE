@@ -13,6 +13,7 @@ public interface CategoryTourMapper {
 
     CategoryTourDTO convertToDTO(CategoryTourEntity categoryTourEntity);
 
+
     CategoryTourEntity covertToEntity(CategoryTourDTO categoryTourDTO);
 
 
