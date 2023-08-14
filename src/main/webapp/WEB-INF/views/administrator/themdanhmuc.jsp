@@ -37,8 +37,8 @@
 								<div class="card-body">
 									<h4 class="card-title">Thêm danh mục tour</h4>
 									<p class="card-description">SkyTour</p>
-									<%--@elvariable id="categorytour" type="java"--%>
-									<sf:form class="forms-sample" modelAttribute="categorytour"
+									<%--@elvariable id="categoryTour" type="java"--%>
+									<sf:form class="forms-sample" modelAttribute="categoryTour"
 										action="${base}/admin/addcategorytour/saveOrUpdate"
 										method="post" enctype="multipart/form-data">
 										<div class="form-group">
@@ -47,21 +47,22 @@
 													  name="id" id="id" readonly="true"></sf:input>
 										</div>
 										<div class="form-group">
-											<label for="name">Tên danh mục</label>
+											<label for="categoryTourName">Tên danh mục</label>
 											<sf:input path="categoryTourName" type="text" class="form-control"
-												name="name" id="name" placeholder="Tên danh mục"></sf:input>
+												name="categoryTourName" id="categoryTourName" placeholder="Tên danh mục"></sf:input>
 										</div>
 										<div class="form-group">
-											<label for="numberGuest">Số lượng khách ghé thăm</label>
+											<label for="categoryTourNumberGuest">Số lượng khách ghé thăm</label>
 											<sf:input path="categoryTourNumberGuest" type="number"
-												class="form-control" name="numberGuest" id="numberGuest"
+												class="form-control" name="categoryTourNumberGuest" id="categoryTourNumberGuest"
 												placeholder="Số lượng khách ghé thăm"></sf:input>
 										</div>
 										<div class="form-group">
-											<label for="categoryTourAvatarRq">Ảnh</label><br> <img
-												src="${base }/upload/${categorytour.categoryTourAvatar}" alt=""
+											<label for="categoryTourAvatarRq">Ảnh</label><br>
+											<img
+												src="${base }/upload/${categoryTour.categoryTourAvatar}" alt=""
 												style="width: 70px; height: 70px;"><br>
-												 <input type="file" name="categoryTourAvatarRq" id="categoryTourAvatarRq">
+											<input type="file" name="categoryTourAvatarRq" id="categoryTourAvatarRq">
 										</div>
 										<div class="form-group">
 											<sf:checkbox path="categoryTourIsLove" name="categoryTourIsLove" id="categoryTourIsLove"

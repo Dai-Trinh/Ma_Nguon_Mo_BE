@@ -60,12 +60,12 @@ public class AdminProductTourController extends BaseController {
 	@RequestMapping(value = {"/admin/addcategorytour"}, method = RequestMethod.GET)
 	public String add_category_tour(final Model model, final HttpServletRequest request, final HttpServletResponse response) throws IOException{
 		CategoryTourEntity newCategoryTour = new CategoryTourEntity();
-		model.addAttribute("categorytour", newCategoryTour);	
+		model.addAttribute("categoryTour", newCategoryTour);
 		return "administrator/themdanhmuc";
 	}
 	@RequestMapping(value = {"/admin/addcategorytour/saveOrUpdate"}, method = RequestMethod.POST)
 	public String addOrUpdate_category_tour(final Model model, final HttpServletRequest request, final HttpServletResponse response,
-											@ModelAttribute("categorytour") CategoryTourEntity categoryTour,
+											@ModelAttribute("categoryTour") CategoryTourEntity categoryTour,
 											@RequestParam("categoryTourAvatarRq") MultipartFile categoryTourAvatarRq) throws IOException{
 		if(categoryTour.getId() == null || categoryTour.getId() <=0) {
 			categoryTourService.addCategoryTour(categoryTour, categoryTourAvatarRq);
@@ -77,8 +77,8 @@ public class AdminProductTourController extends BaseController {
 	@RequestMapping(value= {"/amdin/addcategorytour/{categoryTourId}"}, method = RequestMethod.GET)
 	public String getId_categoryTour(final Model model, final HttpServletRequest request, final HttpServletResponse response,
 									@PathVariable("categoryTourId") Integer categoryTourId) {
-		CategoryTourEntity categorytour = categoryTourService.getById(categoryTourId);
-		model.addAttribute("categorytour", categorytour);
+		CategoryTourEntity categoryTour = categoryTourService.getById(categoryTourId);
+		model.addAttribute("categoryTour", categoryTour);
 		return "administrator/themdanhmuc";
 	}
 	

@@ -122,7 +122,7 @@
 													<td>${dayTour.id}</td>
 													<td>${dayTour.productTourEntityDay.id}</td>
 													<td>${dayTour.dayNumber}</td>
-													<td>${dayTour.dayName}</td>
+													<td style="text-overflow: ellipsis; overflow: hidden; max-width: 400px;">${dayTour.dayName}</td>
 													<td><span id="_dayTour_status_${dayTour.id} }"
 															  style="width: 20px; height: 20px;"> <c:choose>
 														<c:when test="${dayTour.status}">

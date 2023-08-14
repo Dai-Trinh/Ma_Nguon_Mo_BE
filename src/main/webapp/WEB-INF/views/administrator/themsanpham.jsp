@@ -179,9 +179,22 @@
 									</tr>
 									<tr>
 										<td>Lịch trình tour:</td>
-										<td><a href="${base }/admin/adddaytour/${productTour.id}"
-											class="btn btn-behance" style="background: #ccc;">Thêm
-												lịch trình tour</a></td>
+										<td>
+											<c:choose>
+												<c:when test="${productTour.id != null}">
+													<a href="${base }/admin/adddaytour/${productTour.id}"
+													   class="btn btn-behance" style="background: #ccc;">Thêm
+														lịch trình tour</a>
+												</c:when>
+												<c:otherwise>
+													<p style="color: red">(Hãy thêm tour trước rồi quay lại thêm lịch trình tour bằng cách click vào nút sửa ở danh sách)</p>
+												</c:otherwise>
+											</c:choose>
+										</td>
+
+<%--										<td><a href="${base }/admin/adddaytour/${productTour.id}"--%>
+<%--											class="btn btn-behance" style="background: #ccc;">Thêm--%>
+<%--												lịch trình tour</a></td>--%>
 									</tr>
 									<tr>
 										<td>Dịch vụ tour:</td>
