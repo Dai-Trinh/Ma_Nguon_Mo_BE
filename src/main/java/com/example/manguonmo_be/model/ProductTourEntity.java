@@ -85,6 +85,9 @@ public class ProductTourEntity extends AttributesCommon {
     @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
     private Set<DayEntity> dayEntities = new HashSet<>();
 
+    @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
+    private  Set<SaleOrderEntity> saleOrderEntities = new HashSet<>();
+
 //    public Integer getProductTourId() {
 //        return productTourId;
 //    }
@@ -243,5 +246,13 @@ public class ProductTourEntity extends AttributesCommon {
 
     public void setSeo(String seo) {
         this.seo = seo;
+    }
+
+    public Set<SaleOrderEntity> getSaleOrderEntities() {
+        return saleOrderEntities;
+    }
+
+    public void setSaleOrderEntities(Set<SaleOrderEntity> saleOrderEntities) {
+        this.saleOrderEntities = saleOrderEntities;
     }
 }

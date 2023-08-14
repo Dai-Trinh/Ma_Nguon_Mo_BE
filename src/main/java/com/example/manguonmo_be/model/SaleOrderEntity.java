@@ -44,6 +44,10 @@ public class SaleOrderEntity extends AttributesCommon{
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @ManyToOne(fetch =  FetchType.EAGER)
+    @JoinColumn(name = "producttour_id")
+    private ProductTourEntity productTourEntity;
+
     public String getCode() {
         return code;
     }
@@ -138,5 +142,13 @@ public class SaleOrderEntity extends AttributesCommon{
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public ProductTourEntity getProductTourEntity() {
+        return productTourEntity;
+    }
+
+    public void setProductTourEntity(ProductTourEntity productTourEntity) {
+        this.productTourEntity = productTourEntity;
     }
 }

@@ -24,7 +24,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="${base }/admin/index">
                 <span class="menu-title">Trang Chủ</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -40,7 +40,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="${base }/admin/categorytour">Loại danh mục</a></li>
                   <li class="nav-item"> <a class="nav-link" href="${base }/admin/producttour">Sản Phẩm</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/BaiViet.html">Bài viết hệ thống</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="${base }/admin/system">Bài viết hệ thống</a></li>
 
                 </ul>
               </div>
