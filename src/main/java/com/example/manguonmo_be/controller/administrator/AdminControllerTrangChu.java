@@ -1,17 +1,17 @@
 package com.example.manguonmo_be.controller.administrator;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.manguonmo_be.controller.BaseController;
-import com.example.manguonmo_be.model.ProductTourEntity;
 import com.example.manguonmo_be.model.SaleOrderEntity;
+import com.example.manguonmo_be.model.SystemPlanEntity;
 import com.example.manguonmo_be.service.ProductTourService;
-import com.example.manguonmo_be.service.respone.SaleOrderService;
+import com.example.manguonmo_be.service.SystemPlanService;
+import com.example.manguonmo_be.service.SaleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +28,8 @@ public class AdminControllerTrangChu extends BaseController {
 	private ProductTourService productTourService;
 	@Autowired
 	private SaleOrderService saleOrderService;
+	@Autowired
+	private SystemPlanService systemPlanService;
 
 	@RequestMapping(value = {"/admin/index"}, method = RequestMethod.GET)
 	public String test (final Model model, final HttpServletRequest request, final HttpServletResponse response)
@@ -39,13 +41,18 @@ public class AdminControllerTrangChu extends BaseController {
 	public String system_plan (final Model model, final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException{
 		//đường dẫn tới file view
-		List<ProductTourEntity> listProductTourEntities = productTourService.findAll();
-		int numberProductTour = listProductTourEntities.size();
-		request.setAttribute("numberProductTour", numberProductTour);
 
-		List<SaleOrderEntity> listSaleOrderEntities = saleOrderService.findAll();
-		int numberSaleOrder = listSaleOrderEntities.size();
-		request.setAttribute("numberSaleOrder", numberSaleOrder);
+		SystemPlanEntity systemPlanEntities = systemPlanService.getById(1);
+		model.addAttribute("systemPlanEntities", systemPlanEntities);
 		return "administrator/baiviet";   ///
+	};
+	@RequestMapping(value = {"/admin/saleOder"}, method = RequestMethod.GET)
+	public String list_saleoder (final Model model, final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException{
+		//đường dẫn tới file view
+
+		List<SaleOrderEntity> saleOrderEntities = saleOrderService.findAll();
+		model.addAttribute("saleOrderEntities", saleOrderEntities);
+		return "administrator/danhsachhoadon";   ///
 	};
 }

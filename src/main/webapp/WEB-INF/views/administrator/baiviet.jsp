@@ -35,7 +35,7 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                         <div class="counter-wrap">
                             <div class="counter">
-                                <p class=""  style="font-size: 50px;font-weight: bold;"><c:out value="${numberSaleOrder}"/></p>
+                                <p class=""  style="font-size: 50px;font-weight: bold;"><c:out value="${systemPlanEntities.numberTrip}"/></p>
                             </div>
                             <p class="caption">Chuyến đi</p>
                         </div>
@@ -43,7 +43,7 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                         <div class="counter-wrap">
                             <div class="counter">
-                                <p class="" data-number="8492" style="font-size: 50px;font-weight: bold;">0</p>
+                                <p class="" data-number="8492" style="font-size: 50px;font-weight: bold;"><c:out value="${systemPlanEntities.numberGuest}"/></p>
                             </div>
                             <p class="caption">Lượt khách</p>
                         </div>
@@ -51,7 +51,7 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                         <div class="counter-wrap">
                             <div class="counter">
-                                <p class="" data-number="100" style="font-size: 50px;font-weight: bold;">0</p>
+                                <p class="" data-number="100" style="font-size: 50px;font-weight: bold;"><c:out value="${systemPlanEntities.numberGuide}"/></p>
                             </div>
                             <p class="caption">Hướng dẫn viên chuyên nghiệp </p>
                             <button type="button" class="btn btn-behance" data-toggle="collapse" data-target="#demo"
@@ -69,7 +69,7 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                         <div class="counter-wrap">
                             <div class="counter">
-                                <p class="" data-number="100" style="font-size: 50px;font-weight: bold;"><c:out value="${numberProductTour}"/></p>
+                                <p class="" data-number="100" style="font-size: 50px;font-weight: bold;"><c:out value="${systemPlanEntities.numberTour}"/></p>
                             </div>
                             <p class="caption">Số tour có sẵn </p>
                             <%--                <button type="button" class="btn btn-behance" data-toggle="collapse" data-target="#demo2">Sửa</button>--%>

@@ -1,4 +1,4 @@
-package com.example.manguonmo_be.service.respone;
+package com.example.manguonmo_be.service;
 
 import com.example.manguonmo_be.model.SaleOrderEntity;
 import com.example.manguonmo_be.service.BaseService;
