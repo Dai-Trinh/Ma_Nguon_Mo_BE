@@ -12,13 +12,13 @@ public class CategoryTourDTO {
 
     private String categoryTourName;
 
-    private String categoryTourNumberGuest;
+    private int categoryTourNumberGuest;
 
     private String categoryTourAvatar;
 
     private Boolean categoryTourIsLove;
 
-    private Set<ProductTourEntity> productTourEntities = new HashSet<>();
+
 
     public String getCategoryTourName() {
         return categoryTourName;
@@ -28,11 +28,11 @@ public class CategoryTourDTO {
         this.categoryTourName = categoryTourName;
     }
 
-    public String getCategoryTourNumberGuest() {
+    public int getCategoryTourNumberGuest() {
         return categoryTourNumberGuest;
     }
 
-    public void setCategoryTourNumberGuest(String categoryTourNumberGuest) {
+    public void setCategoryTourNumberGuest(int categoryTourNumberGuest) {
         this.categoryTourNumberGuest = categoryTourNumberGuest;
     }
 
@@ -52,11 +52,4 @@ public class CategoryTourDTO {
         this.categoryTourIsLove = categoryTourIsLove;
     }
 
-    public Set<ProductTourEntity> getProductTourEntities() {
-        return productTourEntities;
-    }
-
-    public void setProductTourEntities(Set<ProductTourEntity> productTourEntities) {
-        this.productTourEntities = productTourEntities;
-    }
 }

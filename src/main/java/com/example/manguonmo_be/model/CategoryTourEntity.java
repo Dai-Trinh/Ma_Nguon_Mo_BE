@@ -1,5 +1,7 @@
 package com.example.manguonmo_be.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +22,8 @@ public class CategoryTourEntity extends AttributesCommon{
     @Column(name = "is_love", nullable = true)
     private Boolean categoryTourIsLove;
 
-    @OneToMany(mappedBy = "categoryTourEntity", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoryTourEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonBackReference
     private Set<ProductTourEntity> productTourEntities = new HashSet<>();
 
     public String getCategoryTourName() {

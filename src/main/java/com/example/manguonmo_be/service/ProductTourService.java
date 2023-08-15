@@ -4,14 +4,22 @@ package com.example.manguonmo_be.service;
 import com.example.manguonmo_be.model.CategoryTourEntity;
 import com.example.manguonmo_be.model.ProductTourEntity;
 import com.example.manguonmo_be.model.ProductTourImageEntity;
+import com.example.manguonmo_be.model.QProductTourEntity;
 import com.example.manguonmo_be.repository.ProductTourRepository;
 import com.example.manguonmo_be.service.dto.ProductTourDTO;
 import com.example.manguonmo_be.service.input.PageInput;
+import com.example.manguonmo_be.service.mapper.ProductTourMapper;
 import com.example.manguonmo_be.service.respone.CommonResponse;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
@@ -19,6 +27,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProductTourService extends BaseService<ProductTourEntity> {
@@ -39,11 +49,40 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
 
     public CommonResponse getAllProductTour(PageInput<ProductTourDTO> input){
         Pageable pageable = Pageable.unpaged();
+
+        List<ProductTourDTO> productTourDTOList = new ArrayList<>();
+
         if(input.getPageSize() != 0){
             pageable = PageRequest.of(input.getPageNumber(), input.getPageSize());
         }
 
-        return new CommonResponse().success();
+        QProductTourEntity qProductTourEntity = QProductTourEntity.productTourEntity;
+
+        JPAQuery query = new JPAQueryFactory(entityManager)
+                .selectFrom(qProductTourEntity);
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+        booleanBuilder.and(qProductTourEntity.status.eq(true));
+        ProductTourDTO productTourDTO = input.getFilter();
+
+        if(!StringUtils.isEmpty(productTourDTO.getProductTourName())){
+            booleanBuilder.and(qProductTourEntity.productTourName.containsIgnoreCase(productTourDTO.getProductTourName()));
+        }
+
+        query.where(booleanBuilder);
+
+        List<ProductTourEntity> productTourEntities = query.fetch();
+        long count = query.fetchCount();
+
+        Page<ProductTourEntity> productTourEntityPage = new PageImpl<>(productTourEntities, pageable, count);
+
+        for (ProductTourEntity productTourEntity : productTourEntityPage.getContent()){
+            productTourDTOList.add(ProductTourMapper.INSTANCE.convertToDTO(productTourEntity));
+        }
+
+        return new CommonResponse().success()
+                .data(productTourDTOList)
+                .dataCount(productTourEntityPage.getTotalElements());
 
     }
 

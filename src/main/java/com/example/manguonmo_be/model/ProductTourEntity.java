@@ -1,6 +1,8 @@
 package com.example.manguonmo_be.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CollectionId;
 
 import javax.persistence.*;
@@ -69,9 +71,11 @@ public class ProductTourEntity extends AttributesCommon {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
+    @JsonManagedReference
     private CategoryTourEntity categoryTourEntity;
 
     @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<ProductTourImageEntity> productTourImageEntitySet = new HashSet<>();
     public void addProductTourImages(ProductTourImageEntity _proProductTourImages) {
         _proProductTourImages.setProductTourEntity(this);
@@ -83,6 +87,7 @@ public class ProductTourEntity extends AttributesCommon {
     }
 
     @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<DayEntity> dayEntities = new HashSet<>();
 
 //    public Integer getProductTourId() {
@@ -196,6 +201,7 @@ public class ProductTourEntity extends AttributesCommon {
     public void setProductTourServiceTour(String productTourServiceTour) {
         this.productTourServiceTour = productTourServiceTour;
     }
+
 
     public CategoryTourEntity getCategoryTourEntity() {
         return categoryTourEntity;

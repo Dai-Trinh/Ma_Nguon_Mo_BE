@@ -20,7 +20,7 @@ public class CateTourController {
     CategoryTourService categoryTourService;
 
     @PostMapping(value = "/cate-tours", produces = MediaType.APPLICATION_JSON_VALUE)
-    public CommonResponse getAllCateTour(@RequestBody PageInput<CategoryTourDTO> input){
+    public CommonResponse getAllCateTour(@RequestBody(required = false) PageInput<CategoryTourDTO> input){
         return categoryTourService.getAllCategoryTour(input);
     }
 
