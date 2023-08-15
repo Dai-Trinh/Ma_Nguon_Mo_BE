@@ -4,6 +4,7 @@ package com.example.manguonmo_be.service;
 import com.example.manguonmo_be.model.CategoryTourEntity;
 import com.example.manguonmo_be.model.ProductTourEntity;
 import com.example.manguonmo_be.model.ProductTourImageEntity;
+import com.example.manguonmo_be.model.SystemPlanEntity;
 import com.example.manguonmo_be.repository.ProductTourRepository;
 import com.example.manguonmo_be.service.dto.ProductTourDTO;
 import com.example.manguonmo_be.service.input.PageInput;
@@ -27,6 +28,9 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
     ProductTourRepository productTourRepository;
     @Autowired
     private ProductTourImagesService productTourImagesService;
+    @Autowired
+    private SystemPlanService systemPlanService;
+
 
     @Override
     protected Class<ProductTourEntity> clazz() {

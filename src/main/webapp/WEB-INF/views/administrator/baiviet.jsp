@@ -58,9 +58,9 @@
                                     style="background: #1c7430">Sửa
                             </button>
                             <div class="wrapper-people collapse" id="demo">
-                                <form action="" method="post">
-                                    <label for="people">Nhập số hướng dẫn viên</label><br>
-                                    <input type="number" name="people" id="people" style="margin: 10px;"><br>
+                                <form  action="${base }/admin/system/saveOrUpdate" method="post">
+                                    <label for="numberGuideModel">Nhập số hướng dẫn viên</label><br>
+                                    <input type="number" name="numberGuideModel" id="numberGuideModel" style="margin: 10px;" value="${numberGuideModel}"><br>
                                     <button type="submit" class="btn-dark">Cập nhật</button>
                                 </form>
                             </div>

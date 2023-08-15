@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.example.manguonmo_be.controller.BaseController;
 import com.example.manguonmo_be.model.CategoryTourEntity;
 import com.example.manguonmo_be.model.ProductTourEntity;
+import com.example.manguonmo_be.model.SystemPlanEntity;
 import com.example.manguonmo_be.service.CategoryTourService;
 import com.example.manguonmo_be.service.ProductTourService;
+import com.example.manguonmo_be.service.SystemPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,8 @@ public class AdminProductTourController extends BaseController {
 	private CategoryTourService categoryTourService;
 	@Autowired
 	private ProductTourService productTourService;
+	@Autowired
+	private SystemPlanService systemPlanService;
 	
 	@RequestMapping(value = {"/admin/categorytour"}, method = RequestMethod.GET)
 	public String list_category_tour(final Model model, final HttpServletRequest request, final HttpServletResponse response) throws IOException{
@@ -124,6 +128,7 @@ public class AdminProductTourController extends BaseController {
 										@RequestParam("productTourImageEntitySetRq") MultipartFile[] productTourImageEntitySetRq) throws IllegalStateException, IOException {
 		if(productTour.getId() == null || productTour.getId() <= 0) {
 			productTourService.addProduct(productTour, productTourAvatarRq, productTourImageEntitySetRq);
+			systemPlanService.editNumberTourModel();
 		}else {
 			productTourService.editProduct(productTour, productTourAvatarRq, productTourImageEntitySetRq);
 		}
