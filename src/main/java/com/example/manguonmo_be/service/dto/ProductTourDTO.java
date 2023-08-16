@@ -40,6 +40,8 @@ public class ProductTourDTO {
 
     private String productTourServiceTour;
 
+    private String categoryTourDTO;
+
     private Set<ProductTourImageDTO> productTourImageDTOS = new HashSet<>();
 
     public String getProductTourCode() {
@@ -153,5 +155,13 @@ public class ProductTourDTO {
 
     public void setProductTourImageDTOS(Set<ProductTourImageDTO> productTourImageDTOS) {
         this.productTourImageDTOS = productTourImageDTOS;
+    }
+
+    public String getCategoryTourDTO() {
+        return categoryTourDTO;
+    }
+
+    public void setCategoryTourDTO(String categoryTourDTO) {
+        this.categoryTourDTO = categoryTourDTO;
     }
 }

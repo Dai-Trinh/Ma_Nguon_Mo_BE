@@ -76,6 +76,9 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
         if(!StringUtils.isEmpty(productTourDTO.getProductTourName())){
             booleanBuilder.and(qProductTourEntity.productTourName.containsIgnoreCase(productTourDTO.getProductTourName()));
         }
+        if(!StringUtils.isEmpty(productTourDTO.getCategoryTourDTO())){
+            booleanBuilder.and(qProductTourEntity.categoryTourEntity.categoryTourName.eq(productTourDTO.getCategoryTourDTO()));
+        }
 
         if(!StringUtils.isEmpty(productTourDTO.getProductTourCode())){
             booleanBuilder.and(qProductTourEntity.productTourCode.eq(productTourDTO.getProductTourCode()));
@@ -94,6 +97,7 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
                 productTourImageDTOS.add(ProductTourImageMapper.INSTANCE.convertToDTO(productTourImageEntity));
             }
             ProductTourDTO productTourDTO1 = ProductTourMapper.INSTANCE.convertToDTO(productTourEntity);
+            productTourDTO1.setCategoryTourDTO(productTourEntity.getCategoryTourEntity().getCategoryTourName());
             Set<ProductTourImageDTO> productTourImageDTOSet = new HashSet<>(productTourImageDTOS);
             productTourDTO1.setProductTourImageDTOS(productTourImageDTOSet);
             productTourDTOList.add(productTourDTO1);
