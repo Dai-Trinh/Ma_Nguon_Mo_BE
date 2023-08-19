@@ -1,5 +1,7 @@
 package com.example.manguonmo_be.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class DayEntity extends AttributesCommon{
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_tour_id")
+    @JsonBackReference
     private ProductTourEntity productTourEntityDay;
 
     public Integer getDayNumber() {
@@ -51,5 +54,4 @@ public class DayEntity extends AttributesCommon{
     public void setProductTourEntityDay(ProductTourEntity productTourEntityDay) {
         this.productTourEntityDay = productTourEntityDay;
     }
-
 }

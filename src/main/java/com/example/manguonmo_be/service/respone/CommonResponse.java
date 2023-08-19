@@ -6,7 +6,21 @@ public class CommonResponse<T> {
 
     private T data;
 
-    private int dataCount;
+    private long dataCount;
+
+    public CommonResponse() {
+    }
+
+    public CommonResponse(Result result, T data, long dataCount) {
+        this.result = result;
+        this.data = data;
+        this.dataCount = dataCount;
+    }
+
+    public CommonResponse error(){
+        this.result = new Result("400", "Lỗi", false);
+        return this;
+    }
 
     public CommonResponse success(){
         this.result = new Result("00", "OK", true);
@@ -18,9 +32,33 @@ public class CommonResponse<T> {
         return this;
     }
 
-    public CommonResponse dataCount(int dataCount){
+    public CommonResponse dataCount(long dataCount){
         this.dataCount = dataCount;
         return this;
     }
 
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public long getDataCount() {
+        return dataCount;
+    }
+
+    public void setDataCount(long dataCount) {
+        this.dataCount = dataCount;
+    }
 }

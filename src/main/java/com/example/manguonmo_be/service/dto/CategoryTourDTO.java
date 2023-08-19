@@ -1,30 +1,24 @@
-package com.example.manguonmo_be.model;
+package com.example.manguonmo_be.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.manguonmo_be.model.ProductTourEntity;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "tbl_category_tour")
-public class CategoryTourEntity extends AttributesCommon{
+public class CategoryTourDTO {
 
-    @Column(name = "name", length=100, nullable=false)
     private String categoryTourName;
 
-    @Column(name = "number_guest")
     private int categoryTourNumberGuest;
 
-    @Column(name = "avatar", length=200)
     private String categoryTourAvatar;
 
-    @Column(name = "is_love", nullable = true)
     private Boolean categoryTourIsLove;
 
-    @OneToMany(mappedBy = "categoryTourEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonBackReference
-    private Set<ProductTourEntity> productTourEntities = new HashSet<>();
+
 
     public String getCategoryTourName() {
         return categoryTourName;
@@ -58,11 +52,4 @@ public class CategoryTourEntity extends AttributesCommon{
         this.categoryTourIsLove = categoryTourIsLove;
     }
 
-    public Set<ProductTourEntity> getProductTourEntities() {
-        return productTourEntities;
-    }
-
-    public void setProductTourEntities(Set<ProductTourEntity> productTourEntities) {
-        this.productTourEntities = productTourEntities;
-    }
 }

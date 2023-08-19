@@ -83,18 +83,10 @@
 												items="${productTour.productTourImageEntitySet }"
 												var="productTourImages">
 												<img alt="" style="width: 70px; height: 70px;"
-													src="${base }/upload/${productTourImages.productTourImagePath}">
-											</c:forEach><br>
-											<input type="file" id="productTourImageEntitySetRq"
+													src="${base }/upload/${productTourImages.path}">
+											</c:forEach><br> <input type="file" id="productTourImageEntitySetRq"
 											name="productTourImageEntitySetRq" multiple="multiple"
 											style="margin-top: 40px; height: 56px;"><br></td>
-									</tr>
-									<tr>
-										<td>Id: </td>
-										<td>
-											<sf:input path="id" type="text" class="form-control"
-													  name="id" id="id" readonly="true"></sf:input>
-										</td>
 									</tr>
 									<tr>
 										<td>Danh Mục:</td>
@@ -107,22 +99,22 @@
  -->
 									<tr>
 										<td>Mã tour:</td>
-										<td><sf:input path="productTourCode" type="text" name="productTourCode" required="true"
+										<td><sf:input path="productTourCode" type="text" name="productTourCode"
 												id="productTourCode"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Tên tour:</td>
-										<td><sf:input path="productTourName" type="text" name="productTourName" required="true"
+										<td><sf:input path="productTourName" type="text" name="productTourName"
 												id="productTourName"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Tên tour chi tiết:</td>
-										<td><sf:input path="productTourNameDetail" type="text" required="true"
+										<td><sf:input path="productTourNameDetail" type="text"
 												name="productTourNameDetail" id="productTourNameDetail"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Thời gian:</td>
-										<td><sf:input path="productTourTime" type="text" name="productTourTime" required="true"
+										<td><sf:input path="productTourTime" type="text" name="productTourTime"
 												id="productTourTime" placeholder="(3 ngày 2 đêm, 5 ngày 4 đêm, ...)"></sf:input></td>
 									</tr>
 									<tr>
@@ -153,12 +145,12 @@
 									</tr>
 									<tr>
 										<td>Địa điểm khởi hành:</td>
-										<td><sf:input path="productTourAddressStart" type="text" required="true"
+										<td><sf:input path="productTourAddressStart" type="text"
 												name="productTourAddressStart" id="productTourAddressStart" placeholder="( Từ Hà Nội, Đà Nẵng, Tp. HCM...)"></sf:input></td>
 									</tr>
 									<tr>
 										<td>Giá:</td>
-										<td><sf:input path="productTourPrice" type="text" name="productTourPrice" required="true"
+										<td><sf:input path="productTourPrice" type="text" name="productTourPrice"
 												id="productTourPrice"></sf:input></td>
 									</tr>
 									<tr>
@@ -168,7 +160,7 @@
 									</tr>
 									<tr>
 										<td>Đánh giá:</td>
-										<td><sf:input path="productTourAssess" type="text" name="productTourAssess" required="true"
+										<td><sf:input path="productTourAssess" type="text" name="productTourAssess"
 												id="productTourAssess" value="5" readonly="true"></sf:input></td>
 									</tr>
 									<tr>
@@ -179,22 +171,9 @@
 									</tr>
 									<tr>
 										<td>Lịch trình tour:</td>
-										<td>
-											<c:choose>
-												<c:when test="${productTour.id != null}">
-													<a href="${base }/admin/adddaytour/${productTour.id}"
-													   class="btn btn-behance" style="background: #ccc;">Thêm
-														lịch trình tour</a>
-												</c:when>
-												<c:otherwise>
-													<p style="color: red">(Hãy thêm tour trước rồi quay lại thêm lịch trình tour bằng cách click vào nút sửa ở danh sách)</p>
-												</c:otherwise>
-											</c:choose>
-										</td>
-
-<%--										<td><a href="${base }/admin/adddaytour/${productTour.id}"--%>
-<%--											class="btn btn-behance" style="background: #ccc;">Thêm--%>
-<%--												lịch trình tour</a></td>--%>
+										<td><a href="${base }/admin/adddaytour"
+											class="btn btn-behance" style="background: #ccc;">Thêm
+												lịch trình tour</a></td>
 									</tr>
 									<tr>
 										<td>Dịch vụ tour:</td>

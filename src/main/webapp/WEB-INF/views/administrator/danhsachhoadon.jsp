@@ -42,13 +42,13 @@
                         <table class="table table-hover">
                           <thead>
                             <tr>
-                              <th>STT</th>
                               <th>Mã Hóa Đơn</th>
                               <th>Mã Tour</th>
                               <th>Mã Khách Hàng</th>
                               <th>Tên Khách Hàng</th>
                               <th>SĐT Khách Hàng</th>
                               <th>Email Khách Hàng</th>
+                              <th>Ghi Chú</th>
                               <th>Người Lớn</th>
                               <th>Trẻ Em</th>
                               <th>Trẻ Nhỏ</th>
@@ -57,23 +57,20 @@
                             </tr>
                           </thead>
                           <tbody>
-                          <c:forEach items="${saleOrderEntities}" var="saleOrderEntities"
-                                     varStatus="loop">
                             <tr>
-                              <th scope="row">${loop.index +1 }</th>
-                              <td>${saleOrderEntities.code}</td>
-                              <td>${saleOrderEntities.productTourEntity.id}</td>
-                              <td>${saleOrderEntities.user.id}</td>
-                              <td>${saleOrderEntities.customerName}</td>
-                              <td>${saleOrderEntities.customerPhone}</td>
-                              <td>${saleOrderEntities.customerEmail}</td>
-                              <td>${saleOrderEntities.numberAdult}</td>
-                              <td>${saleOrderEntities.numberChildrenBig}</td>
-                              <td>${saleOrderEntities.numberChildrenNormal}</td>
-                              <td>${saleOrderEntities.numberChildrenSmall}</td>
-                              <td>${saleOrderEntities.total}</td>
+                              <td>HD01</td>
+                              <td>MT01</td>
+                              <td>1</td>
+                              <td>Nguyễn Quang Anh</td>
+                              <td>0323238832</td>
+                              <td>hquanganh123@gmail.com</td>
+                              <td><p>khôngzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p></td>
+                              <td>3</td>
+                              <td>3</td>
+                              <td>3</td>
+                              <td>3</td>
+                              <td>4000000</td>
                             </tr>
-                          </c:forEach>
                           </tbody>
                         </table>
                     </div>

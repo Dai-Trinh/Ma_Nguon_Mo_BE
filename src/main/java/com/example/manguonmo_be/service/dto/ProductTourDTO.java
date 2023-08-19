@@ -3,6 +3,8 @@ package com.example.manguonmo_be.service.dto;
 
 import javax.persistence.Column;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ProductTourDTO {
 
@@ -37,6 +39,10 @@ public class ProductTourDTO {
     private String productTourHighlightTour;
 
     private String productTourServiceTour;
+
+    private String categoryTourDTO;
+
+    private Set<ProductTourImageDTO> productTourImageDTOS = new HashSet<>();
 
     public String getProductTourCode() {
         return productTourCode;
@@ -141,5 +147,21 @@ public class ProductTourDTO {
 
     public void setProductTourServiceTour(String productTourServiceTour) {
         this.productTourServiceTour = productTourServiceTour;
+    }
+
+    public Set<ProductTourImageDTO> getProductTourImageDTOS() {
+        return productTourImageDTOS;
+    }
+
+    public void setProductTourImageDTOS(Set<ProductTourImageDTO> productTourImageDTOS) {
+        this.productTourImageDTOS = productTourImageDTOS;
+    }
+
+    public String getCategoryTourDTO() {
+        return categoryTourDTO;
+    }
+
+    public void setCategoryTourDTO(String categoryTourDTO) {
+        this.categoryTourDTO = categoryTourDTO;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.manguonmo_be.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CollectionId;
 
 import javax.persistence.*;
@@ -69,9 +71,11 @@ public class ProductTourEntity extends AttributesCommon {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
+    @JsonManagedReference
     private CategoryTourEntity categoryTourEntity;
 
     @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<ProductTourImageEntity> productTourImageEntitySet = new HashSet<>();
     public void addProductTourImages(ProductTourImageEntity _proProductTourImages) {
         _proProductTourImages.setProductTourEntity(this);
@@ -83,10 +87,8 @@ public class ProductTourEntity extends AttributesCommon {
     }
 
     @OneToMany(mappedBy = "productTourEntityDay", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<DayEntity> dayEntities = new HashSet<>();
-
-    @OneToMany(mappedBy = "productTourEntity", cascade = CascadeType.ALL)
-    private  Set<SaleOrderEntity> saleOrderEntities = new HashSet<>();
 
 //    public Integer getProductTourId() {
 //        return productTourId;
@@ -200,6 +202,7 @@ public class ProductTourEntity extends AttributesCommon {
         this.productTourServiceTour = productTourServiceTour;
     }
 
+
     public CategoryTourEntity getCategoryTourEntity() {
         return categoryTourEntity;
     }
@@ -246,13 +249,5 @@ public class ProductTourEntity extends AttributesCommon {
 
     public void setSeo(String seo) {
         this.seo = seo;
-    }
-
-    public Set<SaleOrderEntity> getSaleOrderEntities() {
-        return saleOrderEntities;
-    }
-
-    public void setSaleOrderEntities(Set<SaleOrderEntity> saleOrderEntities) {
-        this.saleOrderEntities = saleOrderEntities;
     }
 }

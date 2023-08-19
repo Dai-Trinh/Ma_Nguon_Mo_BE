@@ -101,7 +101,7 @@
 													</c:choose>
 											</span></td>
 											<td><a
-												href="${base }/admin/addproducttour/${productTour.id}"
+												href="${base }/amdin/addproducttour/${productTour.id}"
 												class="btn btn-warning" id="updateProduct">Sửa</a>
 												<button onclick="DeleteShop(${productTour.id})" class="btn btn-danger" id="deleteProduct">Xóa</button>
 											</td>
