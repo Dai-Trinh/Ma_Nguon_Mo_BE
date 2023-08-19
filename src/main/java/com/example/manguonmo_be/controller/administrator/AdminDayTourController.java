@@ -46,4 +46,5 @@ public class AdminDayTourController extends BaseController {
 		}	
 		return "redirect:/admin/adddaytour";
 	}
+	
 }
