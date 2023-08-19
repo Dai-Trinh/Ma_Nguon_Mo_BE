@@ -54,41 +54,41 @@
 						<div class="col-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Thêm lịch trình tour ngày thứ nhất</h4>
+									<h4 class="card-title">Thêm lịch trình tour</h4>
 									<p class="card-description">SkyTour</p>
-									<%--@elvariable id="daytour" type="java"--%>
+									<%--@elvariable id="dayTourSave" type="java"--%>
 									<sf:form class="forms-sample"
 										action="${base }/admin/adddaytour/saveOrUpdate"
-										modelAttribute="daytour" method="post">
+										modelAttribute="dayTourSave" method="post">
 										<div class="form-group">
-											<label for="id">ID Tour</label>
+											<label for="id">Id day tour</label>
 											<sf:input path="id" type="text" class="form-control"
-												name="id" id="id" ></sf:input>
+												name="id" id="id" readonly="true"></sf:input>
 										</div>
-<%-- 										<div class="form-group">
-											<label for="code">Mã Tour</label>
-											<sf:input path="code" type="text" class="form-control"
-												name="code" id="code" disabled></sf:input>
-										</div> --%>
+ 										<div class="form-group">
+											<label for="productTourEntityDay">Id tour</label>
+											<sf:input path="productTourEntityDay.id" type="text" class="form-control"
+												name="productTourEntityDay" id="productTourEntityDay" readonly="true" value="${productTourId}"></sf:input>
+										</div>
 										<div class="form-group">
 											<label for="dayNumber">Ngày thứ</label>
-											<sf:input path="dayNumber" type="number" class="form-control"
+											<sf:input path="dayNumber" type="number" class="form-control" required="true"
 												name="dayNumber" id="dayNumber"
 												placeholder="(1, 2, 3, 4,...)" min="1" max="30"></sf:input>
 										</div>
 										<div class="form-group">
 											<label for="dayName">Tiêu đề của ngày</label>
-											<sf:input path="dayName" type="text" class="form-control"
+											<sf:input path="dayName" type="text" class="form-control" required="true"
 												name="dayName" id="dayName"></sf:input>
 										</div>
 										<div class="form-group">
 											<label for="dayContent">Nội dung lịch trong ngày</label>
 											<sf:textarea path="dayContent"
-												name="dayContent" id="dayContent" autocomplete="off"
+												name="dayContent" id="dayContent" autocomplete="off" required="true"
 												class="summernote form-control" cols="100" rows="4"></sf:textarea>
 										</div>
 										<button type="submit" class="btn btn-gradient-primary me-2">Thêm</button>
-										<a href="${base }/admin/addproducttour"
+										<a href="${base}/admin/addproducttour/${productTourId}"
 											class="btn btn-warning">Thoát</a>
 										<a href="#demo" class="btn btn-behance" data-toggle="collapse"
 											style="background: #ccc;">Xem chi tiết lịch trình tour</a>
@@ -105,9 +105,12 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>Mã Tour</th>
+												<th>STT</th>
+												<th>Id day tour</th>
+												<th>Id tour</th>
 												<th>Ngày thứ</th>
 												<th>Tiêu đề của ngày</th>
+												<th>Status</th>
 												<th>Tác vụ</th>
 											</tr>
 										</thead>
@@ -115,12 +118,25 @@
 											<c:forEach items="${dayTour}" var="dayTour"
 												varStatus="loop">
 												<tr>
+													<th scope="row">${loop.index +1 }</th>
 													<td>${dayTour.id}</td>
+													<td>${dayTour.productTourEntityDay.id}</td>
 													<td>${dayTour.dayNumber}</td>
-													<td>${dayTour.dayName}</td>
-													<td><a href="ThemLichTrinhTour.html"
+													<td style="text-overflow: ellipsis; overflow: hidden; max-width: 400px;">${dayTour.dayName}</td>
+													<td><span id="_dayTour_status_${dayTour.id} }"
+															  style="width: 20px; height: 20px;"> <c:choose>
+														<c:when test="${dayTour.status}">
+															<input type="checkbox" checked="checked"
+																   readonly="readonly">
+														</c:when>
+														<c:otherwise>
+															<input type="checkbox" readonly="readonly">
+														</c:otherwise>
+													</c:choose>
+													</span></td>
+													<td><a href="${base }/admin/adddaytour/${dayTour.productTourEntityDay.id}/${dayTour.id}"
 														class="btn btn-warning" id="updateCategory">Sửa</a>
-														<button class="btn btn-danger" id="deleteCategory">Xóa</button>
+														<button onclick="DeleteDay(${dayTour.id})" class="btn btn-danger" id="deleteDay">Xóa</button>
 													</td>
 												</tr>
 											</c:forEach>
@@ -177,6 +193,33 @@
 			});
 		});
 	</script> -->
+	<script>
+		function DeleteDay(dayTourId) {
+			var data = {
+				id : dayTourId,
+			};
+			var deleteConfirm = confirm("Bạn chắc chắn muốn xóa?");
+			if (deleteConfirm == true) {
+				// $ === jQuery
+				// json == javascript object
+				jQuery.ajax({
+					url : '${base}' + "/admin/daytour/delete", //->request mapping định nghĩa bên controller
+					type : "post", //-> method type của Request Mapping
+					contentType : "application/json", //-> nội dung gửi lên dạng json <=> javascript object
+					data : JSON.stringify(data), //-> chuyển 1 javascript object thành string json
+
+					dataType : "json", // kiểu dữ liệu trả về từ Controller
+					success : function(jsonResult) { // gọi ajax thành công
+						location.reload();
+					},
+					error : function(jqXhr, textStatus, errorMessage) { // gọi ajax thất bại
+						alert("Xóa thất bại");
+					}
+				});
+
+			}
+		}
+	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#dayContent').summernote({

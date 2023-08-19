@@ -218,7 +218,7 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
 //        Slugify slugify = new Slugify();
 //        productTour.setSeo(slugify.slugify(productTour.getName() + "-" + System.currentTimeMillis()));
 
-        return super.saveOrUpdate(productTourInDb);
+        return super.saveOrUpdate(productTour);
     }
 //    public PagerData<ProductTour> searchProduct(ProductSearch searchModel) {
 //        // khởi tạo câu lệnh

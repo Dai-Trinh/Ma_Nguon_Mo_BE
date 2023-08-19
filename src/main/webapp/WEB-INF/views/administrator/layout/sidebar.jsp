@@ -12,7 +12,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="assets/images/anhdaidien.jpg" alt="profile">
+                  <img src="${base}/img/anhdaidien.jpg" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
@@ -24,7 +24,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="${base }/admin/index">
                 <span class="menu-title">Trang Chủ</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -40,7 +40,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="${base }/admin/categorytour">Loại danh mục</a></li>
                   <li class="nav-item"> <a class="nav-link" href="${base }/admin/producttour">Sản Phẩm</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/BaiViet.html">Bài viết hệ thống</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="${base }/admin/system">Bài viết hệ thống</a></li>
 
                 </ul>
               </div>
@@ -71,8 +71,8 @@
               </a>
               <div class="collapse" id="ui-basic2">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="./pages/ui-features/DanhSachHoaDon.html">Danh sách đơn hàng</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/SanPham.html">Khách hàng liên hệ</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="${base}/admin/saleOder">Danh sách đơn hàng</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="${base}/admin/user">Khách hàng liên hệ</a></li>
 
                 </ul>
               </div>

@@ -8,8 +8,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="${base}/admin/trangchu"><img src="${base}/img/images/logo-off.jpg" alt="logo"/></a>
-          <a class="navbar-brand brand-logo-mini" href="${base}/admin/trangchu"><img src="${base}/img/images/logo-mini.svg" alt="logo"/></a>
+<%--          <a class="navbar-brand brand-logo" href="${base}/admin/trangchu"><img src="${base}/img/logo-off.jpg" alt="logo"/></a>--%>
+          <a class="navbar-brand brand-logo-mini" href="${base}/admin/trangchu"><img src="${base}/img/logo-mini.svg" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -29,7 +29,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="${base}/img/images/anhdaidien.jpg" alt="image">
+                  <img src="${base}/img/anhdaidien.jpg" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
