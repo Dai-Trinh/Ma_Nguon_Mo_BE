@@ -77,5 +77,5 @@ public class AdminDayTourController extends BaseController {
 		request.setAttribute("productTourId", productTourId);
 		return "administrator/themlichtrinh";
 	}
-	
+
 }
