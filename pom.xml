@@ -118,6 +118,12 @@
 				<version>2.12.5</version> <!-- Phiên bản cụ thể -->
 			</dependency>
 
+		<dependency>
+			<groupId>com.paypal.sdk</groupId>
+			<artifactId>rest-api-sdk</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+
 
 	</dependencies>
 
