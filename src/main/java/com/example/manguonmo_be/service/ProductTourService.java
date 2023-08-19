@@ -5,9 +5,12 @@ import com.example.manguonmo_be.model.CategoryTourEntity;
 import com.example.manguonmo_be.model.ProductTourEntity;
 import com.example.manguonmo_be.model.ProductTourImageEntity;
 import com.example.manguonmo_be.model.QProductTourEntity;
+import com.example.manguonmo_be.repository.ProductTourImageRepository;
 import com.example.manguonmo_be.repository.ProductTourRepository;
 import com.example.manguonmo_be.service.dto.ProductTourDTO;
+import com.example.manguonmo_be.service.dto.ProductTourImageDTO;
 import com.example.manguonmo_be.service.input.PageInput;
+import com.example.manguonmo_be.service.mapper.ProductTourImageMapper;
 import com.example.manguonmo_be.service.mapper.ProductTourMapper;
 import com.example.manguonmo_be.service.respone.CommonResponse;
 import com.querydsl.core.BooleanBuilder;
@@ -28,7 +31,9 @@ import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductTourService extends BaseService<ProductTourEntity> {
@@ -37,6 +42,9 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
     ProductTourRepository productTourRepository;
     @Autowired
     private ProductTourImagesService productTourImagesService;
+
+    @Autowired
+    ProductTourImageRepository productTourImageRepository;
 
     @Override
     protected Class<ProductTourEntity> clazz() {
@@ -68,6 +76,13 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
         if(!StringUtils.isEmpty(productTourDTO.getProductTourName())){
             booleanBuilder.and(qProductTourEntity.productTourName.containsIgnoreCase(productTourDTO.getProductTourName()));
         }
+        if(!StringUtils.isEmpty(productTourDTO.getCategoryTourDTO())){
+            booleanBuilder.and(qProductTourEntity.categoryTourEntity.categoryTourName.eq(productTourDTO.getCategoryTourDTO()));
+        }
+
+        if(!StringUtils.isEmpty(productTourDTO.getProductTourCode())){
+            booleanBuilder.and(qProductTourEntity.productTourCode.eq(productTourDTO.getProductTourCode()));
+        }
 
         query.where(booleanBuilder);
 
@@ -77,7 +92,15 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
         Page<ProductTourEntity> productTourEntityPage = new PageImpl<>(productTourEntities, pageable, count);
 
         for (ProductTourEntity productTourEntity : productTourEntityPage.getContent()){
-            productTourDTOList.add(ProductTourMapper.INSTANCE.convertToDTO(productTourEntity));
+            List<ProductTourImageDTO> productTourImageDTOS = new ArrayList<>();
+            for (ProductTourImageEntity productTourImageEntity : productTourImageRepository.getProductTourImageEntitiesByIdProductTour(productTourEntity.getId())){
+                productTourImageDTOS.add(ProductTourImageMapper.INSTANCE.convertToDTO(productTourImageEntity));
+            }
+            ProductTourDTO productTourDTO1 = ProductTourMapper.INSTANCE.convertToDTO(productTourEntity);
+            productTourDTO1.setCategoryTourDTO(productTourEntity.getCategoryTourEntity().getCategoryTourName());
+            Set<ProductTourImageDTO> productTourImageDTOSet = new HashSet<>(productTourImageDTOS);
+            productTourDTO1.setProductTourImageDTOS(productTourImageDTOSet);
+            productTourDTOList.add(productTourDTO1);
         }
 
         return new CommonResponse().success()
