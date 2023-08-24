@@ -19,11 +19,6 @@ public class PaypalController {
     public static final String SUCCESS_URL = "pay/success";
     public static final String CANCEL_URL = "pay/cancel";
 
-    @GetMapping("/")
-    public String home() {
-        return "home";
-    }
-
     @PostMapping("/pay/{giaTien}")
     public String payment(@PathVariable("giaTien") double giaTien) {
         try {

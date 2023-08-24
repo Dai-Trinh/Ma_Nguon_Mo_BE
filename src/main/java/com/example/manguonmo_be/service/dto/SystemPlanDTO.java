@@ -1,8 +1,6 @@
 package com.example.manguonmo_be.service.dto;
 
-import javax.persistence.Column;
-
-public class SytemPlanDTO {
+public class SystemPlanDTO {
 
     private Integer numberTrip;
 

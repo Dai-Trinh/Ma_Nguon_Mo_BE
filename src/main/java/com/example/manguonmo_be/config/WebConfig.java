@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
@@ -24,6 +25,19 @@ public class WebConfig implements WebMvcConfigurer {
         ObjectMapper objectMapper = new ObjectMapper();
         // Các tùy chọn tùy chỉnh khác
         return objectMapper;
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**") // Cho phép CORS cho tất cả các đường dẫn
+                        .allowedOrigins("*") // Cho phép tất cả các nguồn gốc
+                        .allowedMethods("GET", "POST", "PUT", "DELETE") // Cho phép các phương thức
+                        .allowedHeaders("*"); // Cho phép tất cả các header
+            }
+        };
     }
 
     @Override
