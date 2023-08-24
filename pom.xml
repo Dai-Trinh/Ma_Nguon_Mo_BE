@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.14</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>manguonmo_be</artifactId>
@@ -22,7 +22,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<!-- view engine -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -34,7 +33,6 @@
 			<version>1.1.2</version>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
@@ -49,30 +47,36 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
 			<version>5.0.0</version> <!-- Phiên bản có thể thay đổi -->
 		</dependency>
-
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-apt</artifactId>
 			<version>5.0.0</version> <!-- Phiên bản có thể thay đổi -->
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>7.34.0</version> <!-- Phiên bản có thể thay đổi -->
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -89,13 +93,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>1.4.2.Final</version> <!-- Phiên bản có thể thay đổi -->
 		</dependency>
-
 		<!-- MapStruct processor -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
@@ -103,12 +109,12 @@
 			<version>1.4.2.Final</version> <!-- Phiên bản tương ứng với MapStruct -->
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.0</version> <!-- Phiên bản có thể thay đổi -->
 		</dependency>
+
 
 
 			<!-- Các dependencies khác -->
@@ -130,22 +136,29 @@
 		</dependency>
 
 
-	</dependencies>
 
+		<!-- Các dependencies khác -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.12.5</version> <!-- Phiên bản cụ thể -->
+		</dependency>
+
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>16</source>
-                    <target>16</target>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>16</source>
+					<target>16</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>com.mysema.maven</groupId>
 				<artifactId>apt-maven-plugin</artifactId>
@@ -162,7 +175,7 @@
 					</execution>
 				</executions>
 			</plugin>
-        </plugins>
+		</plugins>
 	</build>
 	<!-- cc -->
 </project>
