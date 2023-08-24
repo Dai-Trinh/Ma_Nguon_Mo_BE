@@ -5,7 +5,9 @@ import lombok.Data;
 @Data
 public class PasswordResetRequestDto {
 
-	private String phoneNumber;// destination
-	private String userName;
+	private String phone;// destination
+	private String username;
+	private String email;
+	private String password;
 	private String oneTimePassword;
 }

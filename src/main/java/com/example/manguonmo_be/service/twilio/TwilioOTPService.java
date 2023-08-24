@@ -28,14 +28,14 @@ public class TwilioOTPService {
 		PasswordResetResponseDto passwordResetResponseDto = null;
 		
 		try {
-			PhoneNumber to = new PhoneNumber(passwordResetRequestDto.getPhoneNumber());
+			PhoneNumber to = new PhoneNumber(passwordResetRequestDto.getPhone());
 			PhoneNumber from = new PhoneNumber(twilioConfig.getPhoneNumber());
 //			PhoneNumber from = new PhoneNumber("+14705162275");
 			String otp = generateOTP();
 			String otpMessage = "Xin chào bạn , Mã OTP của bạn là ##" + otp
 					+ "##. Sử dụng nó để đăng ký tài khoản. Cảm ơn";
 			Message message = Message.creator(to, from, otpMessage).create();
-			otpMap.put(passwordResetRequestDto.getUserName(), otp);
+			otpMap.put(passwordResetRequestDto.getUsername(), otp);
             passwordResetResponseDto = new PasswordResetResponseDto(OtpStatus.DELIVERED, otpMessage);
 			
 		}catch(Exception ex) {

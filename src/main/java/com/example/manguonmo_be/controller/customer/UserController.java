@@ -40,12 +40,21 @@ public class UserController {
     
     @PostMapping("/send-otp")
 	public PasswordResetResponseDto sendOtp(@RequestBody PasswordResetRequestDto otpRequest) {
-		
+
 		return twilioOTPService.sendOTPForPasswordReset(otpRequest) ;
 	}
     @PostMapping("/validate-otp")
-    public Boolean validateOtp(@RequestBody PasswordResetRequestDto otpRequest) {
-		
-		return twilioOTPService.validateOTP(otpRequest.getOneTimePassword(), otpRequest.getUserName());
+    public  ResponseEntity<String> validateOtp(@RequestBody PasswordResetRequestDto otpRequest) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail(otpRequest.getEmail());
+        userEntity.setPassword(otpRequest.getPassword());
+        userEntity.setPhone(otpRequest.getPhone());
+        userEntity.setUsername(otpRequest.getUsername());
+        if(twilioOTPService.validateOTP(otpRequest.getOneTimePassword(), otpRequest.getUsername()) == true ) {
+            userTourRepository.save(userEntity);
+            return  ResponseEntity.status(200).body("Luu thanh cong!");
+        } else {
+            return  ResponseEntity.status(500).body("Mã OTP không chính xác");
+        }
     }
 }
