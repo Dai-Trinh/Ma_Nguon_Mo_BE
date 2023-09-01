@@ -23,6 +23,10 @@ public class UserEntity extends AttributesCommon {
     @Column(name = "shipping_address", length = 1000, nullable = true)
     private String shippingAddress;
 
+    @Column(name = "is_admin")
+    private boolean isAdmin;
+
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "tbl_users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -105,5 +109,13 @@ public class UserEntity extends AttributesCommon {
 
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

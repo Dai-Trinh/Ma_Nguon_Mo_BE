@@ -31,7 +31,7 @@ public class LoginService {
         }
         userEntity = UserMapper.INSTANCE.convertToEntity(userDTO);
         userRepository.save(userEntity);
-        return new CommonResponse().success();
+        return new CommonResponse(new Result("00", "Đăng ký thành công", true));
     }
 
 

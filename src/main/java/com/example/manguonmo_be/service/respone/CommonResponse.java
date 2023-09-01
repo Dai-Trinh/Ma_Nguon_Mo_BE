@@ -11,6 +11,15 @@ public class CommonResponse<T> {
     public CommonResponse() {
     }
 
+    public CommonResponse(Result result) {
+        this.result = result;
+    }
+
+    public CommonResponse(Result result, T data){
+        this.result = result;
+        this.data = data;
+    }
+
     public CommonResponse(Result result, T data, long dataCount) {
         this.result = result;
         this.data = data;

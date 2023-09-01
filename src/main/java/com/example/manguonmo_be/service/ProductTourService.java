@@ -77,11 +77,20 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
             booleanBuilder.and(qProductTourEntity.productTourName.containsIgnoreCase(productTourDTO.getProductTourName()));
         }
         if(!StringUtils.isEmpty(productTourDTO.getCategoryTourDTO())){
-            booleanBuilder.and(qProductTourEntity.categoryTourEntity.categoryTourName.eq(productTourDTO.getCategoryTourDTO()));
+            booleanBuilder.and(qProductTourEntity.categoryTourEntity.categoryTourName.containsIgnoreCase(productTourDTO.getCategoryTourDTO()));
         }
 
         if(!StringUtils.isEmpty(productTourDTO.getProductTourCode())){
             booleanBuilder.and(qProductTourEntity.productTourCode.eq(productTourDTO.getProductTourCode()));
+        }
+
+        if(productTourDTO.getId() != null){
+            booleanBuilder.and(qProductTourEntity.id.eq(productTourDTO.getId()));
+        }
+
+        if(!StringUtils.isEmpty(productTourDTO.getProductTourAddressStart())){
+            System.err.println("Giá trị: " + productTourDTO.getProductTourAddressStart());
+            booleanBuilder.and(qProductTourEntity.productTourAddressStart.containsIgnoreCase(productTourDTO.getProductTourAddressStart()));
         }
 
         query.where(booleanBuilder);
@@ -97,6 +106,7 @@ public class ProductTourService extends BaseService<ProductTourEntity> {
                 productTourImageDTOS.add(ProductTourImageMapper.INSTANCE.convertToDTO(productTourImageEntity));
             }
             ProductTourDTO productTourDTO1 = ProductTourMapper.INSTANCE.convertToDTO(productTourEntity);
+            productTourDTO1.setId(productTourEntity.getId());
             productTourDTO1.setCategoryTourDTO(productTourEntity.getCategoryTourEntity().getCategoryTourName());
             Set<ProductTourImageDTO> productTourImageDTOSet = new HashSet<>(productTourImageDTOS);
             productTourDTO1.setProductTourImageDTOS(productTourImageDTOSet);

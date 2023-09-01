@@ -2,6 +2,7 @@ package com.example.manguonmo_be.controller;
 
 
 import com.example.manguonmo_be.service.LoginService;
+import com.example.manguonmo_be.service.UserService;
 import com.example.manguonmo_be.service.dto.UserDTO;
 import com.example.manguonmo_be.service.respone.CommonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +18,17 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping(value = "/login/{email}/{password}")
-    public CommonResponse getLogin(@PathVariable("email") String email, @PathVariable("password") String password){
-        return loginService.getLogIn(email, password);
+    @Autowired
+    UserService userService;
+
+    @PostMapping(value = "/login/{username}/{password}")
+    public CommonResponse getLogin(@PathVariable("username") String username, @PathVariable("password") String password){
+        return userService.getUser(username, password);
     }
 
     @PostMapping(value = "/dang-ky")
     public CommonResponse dangKy(@RequestBody UserDTO userDTO){
         return loginService.dangKy(userDTO);
     }
-
-
 
 }

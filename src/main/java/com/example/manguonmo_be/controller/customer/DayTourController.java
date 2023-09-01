@@ -17,7 +17,7 @@ public class DayTourController {
 
 
     @PostMapping(value = "/day-tour/{productTourCode}")
-    public CommonResponse getDayTourByProductTourCode(@PathVariable("productTourCode") String productTourCode){
+    public CommonResponse getDayTourByProductTourCode(@PathVariable("productTourCode") Integer productTourCode){
         return dayTourService.getDayTourByProductCode(productTourCode);
     }
 

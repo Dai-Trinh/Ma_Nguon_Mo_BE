@@ -10,6 +10,8 @@ import java.util.Set;
 
 public class CategoryTourDTO {
 
+    private Integer id;
+
     private String categoryTourName;
 
     private int categoryTourNumberGuest;
@@ -52,4 +54,11 @@ public class CategoryTourDTO {
         this.categoryTourIsLove = categoryTourIsLove;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

@@ -15,6 +15,8 @@ public class UserDTO {
 
     private String shippingAddress;
 
+    private boolean isAdmin;
+
     public String getUsername() {
         return username;
     }
@@ -53,5 +55,13 @@ public class UserDTO {
 
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

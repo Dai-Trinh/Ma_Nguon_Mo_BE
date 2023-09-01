@@ -23,5 +23,9 @@ public class CateTourController {
     public CommonResponse getAllCateTour(@RequestBody(required = false) PageInput<CategoryTourDTO> input){
         return categoryTourService.getAllCategoryTour(input);
     }
+    @PostMapping(value = "/cate-tours-name", produces = MediaType.APPLICATION_JSON_VALUE)
+    public CommonResponse getAllCateTourByName(@RequestBody(required = false) PageInput<CategoryTourDTO> input){
+        return categoryTourService.getCategoryByCategoryName(input);
+    }
 
 }

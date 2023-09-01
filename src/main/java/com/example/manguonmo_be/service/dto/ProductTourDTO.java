@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class ProductTourDTO {
 
+    private  Integer id;
     private String productTourCode;
 
 
@@ -42,7 +43,7 @@ public class ProductTourDTO {
 
     private String categoryTourDTO;
 
-    private Set<ProductTourImageDTO> productTourImageDTOS = new HashSet<>();
+    private Set<ProductTourImageDTO>  productTourImageDTOS = new HashSet<>();
 
     public String getProductTourCode() {
         return productTourCode;
@@ -163,5 +164,13 @@ public class ProductTourDTO {
 
     public void setCategoryTourDTO(String categoryTourDTO) {
         this.categoryTourDTO = categoryTourDTO;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

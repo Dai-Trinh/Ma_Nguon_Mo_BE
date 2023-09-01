@@ -26,12 +26,14 @@ public class DayTourService extends BaseService<DayEntity>{
 		return DayEntity.class;
 	}
 
-	public CommonResponse getDayTourByProductCode(String productTourCode){
+	public CommonResponse getDayTourByProductCode(Integer productTourCode){
 
 		List<DayDTO> dayDTOS = new ArrayList<>();
 		List<DayEntity> dayEntities = dayRepository.getDayByProductTour(productTourCode);
 		for (DayEntity dayEntity : dayEntities){
-			dayDTOS.add(DayMapper.INSTANCE.convertToDTO(dayEntity));
+			DayDTO dayDTO = DayMapper.INSTANCE.convertToDTO(dayEntity);
+			dayDTO.setId(dayEntity.getId());
+			dayDTOS.add(dayDTO);
 		}
 
 		return new CommonResponse().success()

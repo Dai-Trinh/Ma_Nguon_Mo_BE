@@ -49,7 +49,7 @@ public class PaypalController {
             Payment payment = service.executePayment(paymentId, payerId);
             System.out.println(payment.toJSON());
             if (payment.getState().equals("approved")) {
-                return "success";
+                return "Thanh toán thành công!";
             }
         } catch (PayPalRESTException e) {
             System.out.println(e.getMessage());

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DayRepository extends JpaRepository<DayEntity, Integer> {
 
-    @Query("select d from DayEntity d where d.productTourEntityDay.productTourCode = :productCode")
-    List<DayEntity> getDayByProductTour(@Param("productCode") String productCode);
+    @Query("select d from DayEntity d where d.productTourEntityDay.id = :productCode")
+    List<DayEntity> getDayByProductTour(@Param("productCode") Integer productCode);
 
 }

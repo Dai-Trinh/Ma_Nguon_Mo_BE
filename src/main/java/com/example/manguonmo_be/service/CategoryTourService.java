@@ -16,10 +16,12 @@ import com.example.manguonmo_be.service.dto.CategoryTourDTO;
 import com.example.manguonmo_be.service.input.PageInput;
 import com.example.manguonmo_be.service.mapper.CategoryTourMapper;
 import com.example.manguonmo_be.service.respone.CommonResponse;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.manguonmo_be.service.BaseService;
@@ -41,11 +43,37 @@ public class CategoryTourService extends BaseService<CategoryTourEntity>{
 	public CommonResponse getAllCategoryTour(PageInput<CategoryTourDTO> input){
 		QCategoryTourEntity qCategoryTourEntity = QCategoryTourEntity.categoryTourEntity;
 
+		CategoryTourDTO categoryTourDTO1 = input.getFilter();
 		JPAQuery query = new JPAQueryFactory(entityManager)
 				.selectFrom(qCategoryTourEntity)
 				.where(qCategoryTourEntity.status.eq(true));
+		BooleanBuilder booleanBuilder = new BooleanBuilder();
+		if(!StringUtils.isEmpty(categoryTourDTO1.getCategoryTourName())){
+			booleanBuilder.and(qCategoryTourEntity.categoryTourName.containsIgnoreCase(categoryTourDTO1.getCategoryTourName()));
+		}
+		query.where(booleanBuilder);
 
 		List<CategoryTourEntity> categoryTourEntities = query.fetch();
+		List<CategoryTourDTO> categoryTourDTOS = new ArrayList<>();
+
+		for (CategoryTourEntity categoryTourEntity : categoryTourEntities){
+			CategoryTourDTO categoryTourDTO = new CategoryTourDTO();
+			categoryTourDTO.setCategoryTourName(categoryTourEntity.getCategoryTourName());
+			categoryTourDTO.setCategoryTourNumberGuest(categoryTourEntity.getCategoryTourNumberGuest());
+			categoryTourDTO.setCategoryTourAvatar(categoryTourEntity.getCategoryTourAvatar());
+			categoryTourDTO.setCategoryTourIsLove(categoryTourEntity.getCategoryTourIsLove());
+			categoryTourDTO.setId(categoryTourEntity.getId());
+			categoryTourDTOS.add(categoryTourDTO);
+		}
+
+		return new CommonResponse().success()
+				.data(categoryTourDTOS)
+				.dataCount(categoryTourEntities.size());
+
+	}
+	public CommonResponse getCategoryByCategoryName(PageInput<CategoryTourDTO> input){
+
+		List<CategoryTourEntity> categoryTourEntities = categoryTourRepository.searchByCategoryNameContainingKeyword(input.getFilter().getCategoryTourName());
 		List<CategoryTourDTO> categoryTourDTOS = new ArrayList<>();
 
 		for (CategoryTourEntity categoryTourEntity : categoryTourEntities){
@@ -97,7 +125,7 @@ public class CategoryTourService extends BaseService<CategoryTourEntity>{
 			
 			//update avatar moi
 			String fileName = getUniqueUploadFileName(categoryAvatar.getOriginalFilename());
-			String pathToAvatar = "D:/Computer/Pictures-admin/upload/productTour/avatar/" + fileName;
+			String pathToAvatar = "D:/Computer/Pictures-admin/upload/categoryTour/avatar/" + fileName;
 			categoryAvatar.transferTo(new File(pathToAvatar));
 			categoryTour.setCategoryTourAvatar("categoryTour/avatar/"+fileName);
 		}else {
